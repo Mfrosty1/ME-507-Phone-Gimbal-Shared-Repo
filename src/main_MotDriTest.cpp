@@ -26,7 +26,7 @@ DRV8833 driver = DRV8833();
 // Ain1, Ain2, Bin1, and Bin2 DRV8833 pins.
 
 // change to uint8_t
-const int inputA1 = 13, inputA2 = 14, inputB1 = 18, inputB2 = 19;
+const int inputA1 = 13, inputA2 = 14;
 
 // The speed of the motors:
 const int motorSpeed = 100; // assuming 255 is max?
@@ -54,11 +54,11 @@ void loop() {
   
   // Pause the motors for stability:
   driver.motorAStop();
-  
+
   Serial.println("Reverse:");
   // Put the motors in reverse using the speed:
   driver.motorAReverse(motorSpeed);
-  driver.motorBReverse(motorSpeed);
+
   // Wait to see the effect:
   delay(500);
   
