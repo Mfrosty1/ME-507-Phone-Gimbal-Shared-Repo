@@ -18,24 +18,29 @@
 #include <DRV8833.h>
 
 // Create an instance of the DRV8833:
-DRV8833 driver = DRV8833();
+// DRV8833 driver = DRV8833(); //original code
+DRV8833 driver;
+
 
 // Pin numbers. Replace with your own!
 // For this example sketch, these pin numbers MUST be PWM.
 // Attach the Arduino's pin numbers below to the
 // Ain1, Ain2, Bin1, and Bin2 DRV8833 pins.
 
-// change to uint8_t
-const int inputA1 = 13, inputA2 = 14;
+// change to uint8_t have tried 13, 14; 4, 5; PB4, PB5; D4, D5; 5, 6;
+const int inputA1 = 4, inputA2 = 5;
 
 // The speed of the motors:
-const int motorSpeed = 100; // assuming 255 is max?
+const int motorSpeed = 128; // assuming 255 is max?
 
 void setup() {
   // put your setup code here, to run once:
   
   // Start the serial port:
   Serial.begin(115200);   // might need to change this
+
+  // Wait for the serial port to connect. Needed for Leonardo.
+  while (!Serial);
   
   // Attach the motors to the input pins:
   driver.attachMotorA(inputA1, inputA2);
@@ -50,7 +55,7 @@ void loop() {
   // Put the motors in forward using the speed:
   driver.motorAForward(motorSpeed);
   // Wait to see the effect:
-  delay(500);
+  delay(1000);
   
   // Pause the motors for stability:
   driver.motorAStop();
@@ -60,13 +65,13 @@ void loop() {
   driver.motorAReverse(motorSpeed);
 
   // Wait to see the effect:
-  delay(500);
+  delay(1000);
   
   Serial.println("Stop:");
   // Stop the motors:
   // You don't specify a speed for stop().
   driver.motorAStop();
   // Wait to see the effect:
-  delay(500);
+  delay(1000);
 
 }

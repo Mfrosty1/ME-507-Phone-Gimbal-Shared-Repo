@@ -39,7 +39,7 @@ public:
 private:
 	// Fields for the class:
 	int a1, a2;
-	boolean motorAAttached = false;
+	bool motorAAttached = false;
 
 };
 
