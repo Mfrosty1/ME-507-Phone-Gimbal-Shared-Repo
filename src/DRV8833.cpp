@@ -62,39 +62,6 @@ void DRV8833::motorAStop()
 }
 
 
-// run motor b in reverse at specified speed
-void DRV8833::motorBReverse(int speed)
-{
-	if (this->motorBAttached) // If motor B is attached...
-	{
-		// ...then put it in reverse.
-		digitalWrite(this->b1, LOW);
-		analogWrite(this->b2, speed);
-	}
-}
-
-// run motor b forwards at specified speed
-void DRV8833::motorBForward(int speed)
-{
-	if (this->motorBAttached) // If motor B is attached...
-	{
-		// ...then put it in forward.
-		analogWrite(this->b1, speed);
-		digitalWrite(this->b2, LOW);
-	}
-}
-
-// stop motor B
-void DRV8833::motorBStop()
-{
-	if (this->motorBAttached) // If motor B is attached...
-	{
-		// ...then stop it.
-		digitalWrite(this->b1, HIGH);
-		digitalWrite(this->b2, HIGH);
-	}
-}
-
 void DRV8833::attachMotorA(int a1, int a2)
 {
 	if (!this->motorAAttached) // If motor A is NOT attached...
@@ -111,24 +78,5 @@ void DRV8833::attachMotorA(int a1, int a2)
 		// Initialize as LOW.
 		digitalWrite(this->a1, LOW);
 		digitalWrite(this->a2, LOW);
-	}
-}
-
-void DRV8833::attachMotorB(int b1, int b2)
-{
-	if (!this->motorBAttached) // If motor B is NOT attached...
-	{
-		// ...attach motor A to the input pins.
-		pinMode(b1, OUTPUT);
-		pinMode(b2, OUTPUT);
-		this->b1 = b1;
-		this->b2 = b2;
-
-		// Show the motor is attached.
-		this->motorBAttached = true;
-
-		// Initialize as LOW.
-		digitalWrite(this->b1, LOW);
-		digitalWrite(this->b2, LOW);
 	}
 }

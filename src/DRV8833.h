@@ -31,9 +31,6 @@ public:
 	void motorAForward(int speed);
 	void motorAStop();
 
-	void motorBReverse(int speed);
-	void motorBForward(int speed);
-	void motorBStop();
 
 	// Functions to attach motors:
 	void attachMotorA(int a1 /* Input pin A1 */, int a2 /* Input pin A2 */);

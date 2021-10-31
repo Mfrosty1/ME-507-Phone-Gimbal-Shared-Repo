@@ -39,7 +39,6 @@ void setup() {
   
   // Attach the motors to the input pins:
   driver.attachMotorA(inputA1, inputA2);
-  driver.attachMotorB(inputB1, inputB2);
   Serial.println("Ready!");
 
 }
@@ -50,13 +49,11 @@ void loop() {
   Serial.println("Forward:");
   // Put the motors in forward using the speed:
   driver.motorAForward(motorSpeed);
-  driver.motorBForward(motorSpeed);
   // Wait to see the effect:
   delay(500);
   
   // Pause the motors for stability:
   driver.motorAStop();
-  driver.motorBStop();
   
   Serial.println("Reverse:");
   // Put the motors in reverse using the speed:
@@ -69,7 +66,6 @@ void loop() {
   // Stop the motors:
   // You don't specify a speed for stop().
   driver.motorAStop();
-  driver.motorBStop();
   // Wait to see the effect:
   delay(500);
 
