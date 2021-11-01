@@ -31,7 +31,7 @@ DRV8833 driver;
 const int inputA1 = 4, inputA2 = 5;
 
 // The speed of the motors:
-const int motorSpeed = 128; // assuming 255 is max?
+const int motorSpeed = 128; // assuming 255 is max
 
 void setup() {
   // put your setup code here, to run once:
@@ -40,7 +40,7 @@ void setup() {
   Serial.begin(115200);   // might need to change this
 
   // Wait for the serial port to connect. Needed for Leonardo.
-  while (!Serial);
+  delay(5000);
   
   // Attach the motors to the input pins:
   driver.attachMotorA(inputA1, inputA2);
