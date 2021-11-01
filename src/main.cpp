@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-uint8_t in1Pin = PB4, in2Pin = PB10, sleepPin = PB3, faultPin = PA6; // enablePin = ?
+uint8_t in1Pin = PB4, in2Pin = PB10, sleepPin = PB3, faultPin = PA6; 
 
 
 void setup() {
