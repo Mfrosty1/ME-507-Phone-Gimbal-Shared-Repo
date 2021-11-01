@@ -8,11 +8,11 @@ void setup() {
     pinMode(in2Pin, OUTPUT);
     pinMode(sleepPin, OUTPUT);
     // pinMode(enablePin, OUTPUT);
-    // pinMode(faultPin, OUTPUT);
+    pinMode(faultPin, INPUT_PULLUP);
 
     // digitalWrite(enablePin, HIGH);
     digitalWrite(sleepPin, HIGH);
-    // digitalWrite(faultPin, LOW);
+
     // digitalWrite(in1Pin, HIGH);
     // digitalWrite(in2Pin, LOW);
 
@@ -24,6 +24,8 @@ void setup() {
 }
  
 void loop() {
+    Serial.print("Fault pin reads: ");
+    Serial.println(digitalRead(faultPin));
 
     Serial.println("run motors");
     digitalWrite(in1Pin, LOW);
