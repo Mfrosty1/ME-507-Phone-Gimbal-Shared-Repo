@@ -28,7 +28,7 @@ DRV8833 driver;
 // Ain1, Ain2, Bin1, and Bin2 DRV8833 pins.
 
 // change to uint8_t have tried 13, 14; 4, 5; PB4, PB5; D4, D5; 5, 6;
-const int inputA1 = PA4, inputA2 = 5;
+const int inputA1 = PB4, inputA2 = PB5;
 
 // The speed of the motors:
 const int motorSpeed = 128; // assuming 255 is max?
