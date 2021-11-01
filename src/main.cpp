@@ -1,6 +1,6 @@
 #include <Arduino.h>
 
-uint8_t in1Pin = PB4, in2Pin = PB5, sleepPin = PA_5; // enablePin = ?
+uint8_t in1Pin = PB4, in2Pin = PB10, sleepPin = PB3, faultPin = PA6; // enablePin = ?
 
 
 void setup() {
@@ -8,9 +8,13 @@ void setup() {
     pinMode(in2Pin, OUTPUT);
     pinMode(sleepPin, OUTPUT);
     // pinMode(enablePin, OUTPUT);
+    // pinMode(faultPin, OUTPUT);
 
     // digitalWrite(enablePin, HIGH);
     digitalWrite(sleepPin, HIGH);
+    // digitalWrite(faultPin, LOW);
+    // digitalWrite(in1Pin, HIGH);
+    // digitalWrite(in2Pin, LOW);
 
     Serial.begin(115200);
     delay(5000);
@@ -21,11 +25,17 @@ void setup() {
  
 void loop() {
 
+    Serial.println("run motors");
     digitalWrite(in1Pin, LOW);
     digitalWrite(in2Pin, HIGH);
-    delay(2000);
-    digitalWrite(in1Pin, 1);
-    digitalWrite(in2Pin, 0);
-    delay(2000);
-
+    delay(1000);
+    digitalWrite(in1Pin, HIGH);
+    digitalWrite(in2Pin, LOW);
+    delay(1000);
+    digitalWrite(in1Pin, HIGH);
+    digitalWrite(in2Pin, HIGH);
+    delay(1000);
+    digitalWrite(in1Pin, LOW);
+    digitalWrite(in2Pin, LOW);
+    delay(1000);
 }
