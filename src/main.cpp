@@ -7,7 +7,7 @@ void setup() {
 
     // Begin Serial port
     Serial.begin(115200);
-    delay(2000);
+    delay(5000);
     Serial.println("Initializing pins");
 
     // Assign pin modes
@@ -17,13 +17,16 @@ void setup() {
     // pinMode(faultPin, INPUT_PULLUP); // Set !FAULT pin to INPUT
 
     // Set up driver to run motors
-    digitalWrite(sleepPin, HIGH);    // Set !SLEEP to high
+    digitalWrite(sleepPin, HIGH);    // Set !SLEEP to HIGH
+    digitalWrite(in1Pin, HIGH);      // Set EN to HIGH
+    digitalWrite(in2Pin, LOW);       // Set PH to LOW
 
-    Serial.println("Initializing pins");
+    Serial.println("Ready to start program");
     
 }
  
 void loop() {
+   
 
     // See what the !FAULT pin is reading
     // Serial.print("Fault pin reads: ");
