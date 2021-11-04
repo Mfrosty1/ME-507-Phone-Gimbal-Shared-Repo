@@ -26,7 +26,6 @@
 
 #include "ICM_20948_v2.h" // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
 #include "Wire.h"
-// #include "wiring_private.h" // matthew added this
 
 #define SERIAL_PORT Serial
 
