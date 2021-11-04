@@ -32,6 +32,8 @@ protected:
   float getGyrDPS(int16_t axis_val);
   float getAccMG(int16_t axis_val);
   float getMagUT(int16_t axis_val);
+  float getAngles(void);
+
 
 public:
   ICM_20948(); // Constructor

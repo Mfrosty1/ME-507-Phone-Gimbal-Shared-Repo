@@ -1,7 +1,10 @@
 #include <Arduino.h>
+#include "DRV8256.h"
 
-uint32_t in1Pin = PB4, in2Pin = PB10, sleepPin = PB3, faultPin = PA6; 
 
+
+
+DRV8256 pitchMotor;
 
 void setup() {
 
@@ -10,41 +13,26 @@ void setup() {
     delay(5000);
     Serial.println("Initializing pins");
 
-    // Assign pin modes
-    pinMode(in1Pin, OUTPUT);         // Set EN/IN1 pin to OUTPUT
-    pinMode(in2Pin, OUTPUT);         // Set PH/IN1 pin to OUTPUT
-    pinMode(sleepPin, OUTPUT);       // Set !SLEEP pin to OUTPUT
-    // pinMode(faultPin, INPUT_PULLUP); // Set !FAULT pin to INPUT
+    // PB5 = D4, PB4 = D5, PA5 = D13, PA6 = D12
+    pitchMotor.attachMotor(PB5, PB4, PA5, PA6);     
 
-    // Set up driver to run motors
-    digitalWrite(sleepPin, HIGH);    // Set !SLEEP to HIGH
-    digitalWrite(in1Pin, HIGH);      // Set EN to HIGH
-    digitalWrite(in2Pin, LOW);       // Set PH to LOW
+    pitchMotor.motorForward(20);
+    delay(2000);
+    pitchMotor.motorForward(255);
+    
+    // delay(2000);
+    // pitchMotor.motorStop();
+    // delay(2000);
+    pitchMotor.motorReverse(100);
+    delay(2000);
+    pitchMotor.motorReverse(255);
+    delay(2000);
+    pitchMotor.motorStop();
 
-    Serial.println("Ready to start program");
     
 }
  
-void loop() {
-   
+void loop() 
+{
 
-    // See what the !FAULT pin is reading
-    // Serial.print("Fault pin reads: ");
-    // Serial.println(digitalRead(faultPin));
-
-    // Run motors in one direction
-    Serial.println("run motors");
-    digitalWrite(in1Pin, HIGH);
-    digitalWrite(in2Pin, LOW);
-    delay(1000); // Pause
-
-    // Turn off motor
-    digitalWrite(in1Pin, LOW);
-    digitalWrite(in2Pin, LOW);
-    delay(1000); // Pause
-
-    // Run motors in opposite direction
-    digitalWrite(in1Pin, LOW);
-    digitalWrite(in2Pin, HIGH);
-    delay(1000); // Pause
 }
