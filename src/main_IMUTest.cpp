@@ -29,10 +29,6 @@
 
 #define SERIAL_PORT Serial
 
-// #define OurWire myWire(&sercom3, 19, 20);
-// #define TwoWire Wire1(&sercom0, 19, 20);
-// Wire.begin(19, 20);
-
 //            SDA  SCL
 TwoWire Wire2(A4, A5);
 

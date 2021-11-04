@@ -1,4 +1,4 @@
-#include "ICM_20948.h"
+#include "ICM_20948_v2.h"
 
 #include "util/ICM_20948_REGISTERS.h"
 #include "util/AK09916_REGISTERS.h"
