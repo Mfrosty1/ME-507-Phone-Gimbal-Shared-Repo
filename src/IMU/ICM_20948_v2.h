@@ -89,6 +89,11 @@ public:
   float gyrY(void); // degrees per second
   float gyrZ(void); // degrees per second
 
+  // -------------- OUR ADDITIONAL METHODS --------------
+  float pitch(void);  // degrees
+  float roll(void);   // degrees
+  float yaw(void);    // degrees
+
   float temp(void); // degrees celsius
 
   ICM_20948_Status_e status;                                              // Status from latest operation
