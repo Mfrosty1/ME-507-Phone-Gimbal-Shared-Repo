@@ -1,4 +1,4 @@
-#include "ICM_20948_v2.h"
+#include "ICM_20948.h"
 
 #include "util/ICM_20948_REGISTERS.h"
 #include "util/AK09916_REGISTERS.h"
@@ -12,12 +12,6 @@ ICM_20948_Status_e ICM_20948_read_SPI(uint8_t reg, uint8_t *buff, uint32_t len, 
 // Base
 ICM_20948::ICM_20948()
 {
-
-}
-
-float ICM_20948::getAngles(void)
-{
-
 
 }
 

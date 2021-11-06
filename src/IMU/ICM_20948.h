@@ -32,11 +32,11 @@ protected:
   float getGyrDPS(int16_t axis_val);
   float getAccMG(int16_t axis_val);
   float getMagUT(int16_t axis_val);
-  float getAngles(void);
-
 
 public:
   ICM_20948(); // Constructor
+  //----------------- OUR NEW CONSTRUCTOR -------------
+  ICM_20948(uint8_t SDA_Pin, uint8_t SCL_Pin); // Pass in the names of the pins
 
 // Enable debug messages using the chosen Serial port (Stream)
 // Boards like the RedBoard Turbo use SerialUSB (not Serial).
@@ -89,10 +89,11 @@ public:
   float gyrY(void); // degrees per second
   float gyrZ(void); // degrees per second
 
-  // -------------- OUR ADDITIONAL METHODS --------------
-  float pitch(void);  // degrees
-  float roll(void);   // degrees
-  float yaw(void);    // degrees
+  // // -------------- OUR ADDITIONAL METHODS --------------
+  // float pitch(void);  // degrees
+  // float roll(void);   // degrees
+  // float yaw(void);    // degrees
+  // // ----------------------------------------------------
 
   float temp(void); // degrees celsius
 
