@@ -39,18 +39,17 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 		Serial.print("attaching motor");
 
 		// Attach motor to the input pins.
-		pinMode(enablePin, OUTPUT);       // Set EN/IN1 pin to OUTPUT
-		pinMode(phasePin, OUTPUT);       // Set PH/IN1 pin to OUTPUT
-    	pinMode(sleepPin, OUTPUT); // Set !SLEEP pin to OUTPUT
+		pinMode(enablePin, OUTPUT); // Set EN/IN1 pin to OUTPUT
+		pinMode(phasePin, OUTPUT);  // Set PH/IN1 pin to OUTPUT
+    	pinMode(sleepPin, OUTPUT);  // Set !SLEEP pin to OUTPUT
 
-		
 		// Show the motor is attached.
 		this->motorAttached = true;
 
 		// Initialize as LOW.
-		digitalWrite(enablePin, HIGH);  // Set EN to HIGH
-		digitalWrite(phasePin, LOW);  // Set PH to LOW
-		digitalWrite(sleepPin, HIGH);     // Set !SLEEP to HIGH
+		digitalWrite(enablePin, HIGH); // Set EN to HIGH
+		digitalWrite(phasePin, LOW);   // Set PH to LOW
+		digitalWrite(sleepPin, HIGH);  // Set !SLEEP to HIGH
 	}
 }
 
@@ -60,8 +59,8 @@ void DRV8256::motorReverse(uint8_t speed)
 	if (this->motorAttached) // If motor is attached...
 	{
 		// ...then put it in reverse.
-		digitalWrite(phasePin, LOW);
 		analogWrite(enablePin, speed);
+		digitalWrite(phasePin, LOW);
 	}
 }
 

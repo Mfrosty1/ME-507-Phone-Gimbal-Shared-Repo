@@ -28,9 +28,15 @@
 /// A share to hold the current pitch angle.
 Share<float> pitchAngle("Pitch Angle");
 /// A share to hold the current roll angle.
-Share<float> rollAngle("Pitch Angle");
+Share<float> rollAngle("Roll Angle");
 /// A share to hold the current yaw angle.
-Share<float> yawAngle("Pitch Angle");
+Share<float> yawAngle("Yaw Angle");
+/// A share to hold the desired pitch motor speed.
+Share<int16_t> pMotSpeed("Pitch Motor Speed");
+/// A share to hold the desired roll motor speed.
+Share<int16_t> rMotSpeed("Roll Motor Speed");
+/// A share to hold the desired yaw motor speed.
+Share<int16_t> yMotSpeed("Yaw Motor Speed");
 
 // An example queue just in case we need it
 // Queue<uint16_t> data_queue (100, "Data");
