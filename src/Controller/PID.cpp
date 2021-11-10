@@ -6,7 +6,8 @@
  *    - Derivative-on-measurement
  *    - Integrator anti-windup
  *    - Controller ouptut clamping
- *  @author Ryan McLaughlin & Matthew Frost
+ *  @author Ryan McLaughlin
+ *  @author Matthew Frost
  *  @author pms67 (original author of files adapted)
  *  @date   11/06/2021 Code accesed from pms67 GitHub repository
  *  @date   
@@ -14,6 +15,44 @@
 
 #include "PID.h"
 #include "Arduino.h"
+
+
+/** @brief   Initialize controller gains and inputs.
+ *  @details This constructor takes in user selections for gains
+ *           and other contorller inputs such as output limits,
+ *           integrator limits, and rate of sensor data collection.
+ *  @param   Kp_in          Proportional gain.
+ *  @param   Ki_in          Integral gain.
+ *  @param   Kd_in          Derivative gain.
+ *  @param   tau_in         Differentiator low-pass filter time constant.
+ *  @param   limMin_in      Output limit (negative values).
+ *  @param   limMax_in      Output limit (positive values).
+ *  @param   limMinInt_in   Integral control output limit (negative values).
+ *  @param   limMaxInt_in   Integral control output limit (positive values).
+ *  @param   T_in           Sensor data collection rate [seconds].
+ */
+void PID::SetInputs(float Kp_in, 
+                    float Ki_in, 
+                    float Kd_in,
+                    float tau_in,
+                    float limMin_in,
+                    float limMax_in,
+                    float limMinInt_in,
+                    float limMaxInt_in,
+                    float T_in)
+{
+	// set controller values
+	this->Kp = Kp_in;
+    this->Ki = Ki_in;
+    this->Kd = Kd_in;
+    this->tau = tau_in;
+    this->limMin = limMin_in;
+    this->limMax = limMax_in;
+    this->limMinInt = limMinInt_in;
+    this->limMaxInt = limMaxInt_in;
+    this->T = T_in;
+}
+
 
 /** @brief   Initialize controller variables.
  *  @details This constructor initializes controller intermediate
