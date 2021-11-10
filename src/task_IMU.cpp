@@ -118,7 +118,7 @@ void task_IMU (void* p_params)
                 double q1 = ((double)data.Quat6.Data.Q1) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q2 = ((double)data.Quat6.Data.Q2) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q3 = ((double)data.Quat6.Data.Q3) / 1073741824.0; // Convert to double. Divide by 2^30
-
+                Serial << "q1=" << q1 << " q2=" << q2 << " q3=" << q3 << endl;
                 // uint32_t negativeCounter = 0;
                 // double insidesqrt = 1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3));
                 // Serial << "q0 sqrt( )" << insidesqrt;
@@ -132,7 +132,7 @@ void task_IMU (void* p_params)
                 // https://en.wikipedia.org/w/index.php?title=Conversion_between_quaternions_and_Euler_angles&section=8#Source_code_2
 
                 double q0 = sqrt(1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3)));        // sqrt of negative?
-
+                Serial << "q0=" << q0 << endl;
                 double q2sqr = q2 * q2;
 
                 // roll (x-axis rotation)
