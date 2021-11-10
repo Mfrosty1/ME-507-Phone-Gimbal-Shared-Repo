@@ -149,6 +149,7 @@ void task_IMU (void* p_params)
                 pitchAngle.put(pitch);
                 rollAngle.put(roll);
                 yawAngle.put(yaw);
+                Serial.println("IMUTask: Angles pushed to shares");
 
                 vTaskDelay(10);
             }

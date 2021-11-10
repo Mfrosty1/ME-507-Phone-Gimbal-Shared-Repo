@@ -20,12 +20,12 @@
 #endif
 
 // Includes for our tasks
-#include "task_IMU.h"          // Header for IMU task
-#include "task_motor.h"        // Header for motor task
-#include "Controller/task_PID.h"
-#include "taskshare.h"         // Header for inter-task shared data
-#include "taskqueue.h"         // Header for inter-task data queues
-#include "shares.h"            // Header for shares used in this project
+#include "task_IMU.h"            // Header for IMU task
+#include "task_motor.h"          // Header for motor task
+#include "Controller/task_PID.h" // Header for controller 
+#include "taskshare.h"           // Header for inter-task shared data
+#include "taskqueue.h"           // Header for inter-task data queues
+#include "shares.h"              // Header for shares used in this project
 
 // Declare the shared variables and queues
 /// A share to hold the current pitch angle.
@@ -43,9 +43,6 @@ Share<int16_t> yMotSpeed("Yaw Motor Speed");
 
 // An example queue just in case we need it
 // Queue<uint16_t> data_queue (100, "Data");
-
-// Eventually put this into a motor class
-// DRV8256 pitchMotor;
 
 void setup() {
 
