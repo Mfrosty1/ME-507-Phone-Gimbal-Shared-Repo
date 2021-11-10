@@ -51,6 +51,7 @@ void PID::SetInputs(float Kp_in,
     this->limMinInt = limMinInt_in;
     this->limMaxInt = limMaxInt_in;
     this->T = T_in;
+    Serial.println("Controller values set.");
 }
 
 
