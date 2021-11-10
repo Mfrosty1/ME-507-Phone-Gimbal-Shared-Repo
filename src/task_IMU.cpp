@@ -119,13 +119,13 @@ void task_IMU (void* p_params)
                 double q2 = ((double)data.Quat6.Data.Q2) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q3 = ((double)data.Quat6.Data.Q3) / 1073741824.0; // Convert to double. Divide by 2^30
 
+                uint32_t negativeCounter = 0;
                 double insidesqrt = 1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3));
                 Serial << "q0 sqrt( )" << insidesqrt;
                 if (insidesqrt < 0)
                 {
-                    Serial.println("NEGATIVE OF SQUARE ROOT");
+                    Serial << "negCount = " << ++negativeCounter <<  endl;
                 }
-
 
                 // Convert the quaternions to Euler angles (roll, pitch, yaw)
                 // https://en.wikipedia.org/w/index.php?title=Conversion_between_quaternions_and_Euler_angles&section=8#Source_code_2
