@@ -30,8 +30,8 @@ void task_PID(void* p_params)
 
     // SetInputs(Kp, Ki, Kd, tau, min, max, minInt, maxInt, T)                   
     pitchController.SetInputs(1.0f,  1.0f, 1.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.01f);
-    rollController .SetInputs(1.0f,  1.0f, 1.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.01f);
-    yawController  .SetInputs(1.0f,  1.0f, 1.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.01f);
+    rollController.SetInputs(1.0f,  1.0f, 1.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.01f);
+    yawController.SetInputs(1.0f,  1.0f, 1.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.01f);
 
     // input setpoints for each motor here
     float pitchSetpoint = 0.0f;
@@ -45,6 +45,7 @@ void task_PID(void* p_params)
         float controlRollSpeed  = rollController.Update( rollSetpoint, rollAngle.get() );
         float controlYawSpeed   = yawController.Update( yawSetpoint, yawAngle.get() );
         // Serial.println("controller updates have been made");
+        Serial.println(controlYawSpeed);
         Serial << "Cont: p = " << controlPitchSpeed << " r = " << controlRollSpeed << " y = " << controlYawSpeed << endl;
 
         // put controller outputs into shares
