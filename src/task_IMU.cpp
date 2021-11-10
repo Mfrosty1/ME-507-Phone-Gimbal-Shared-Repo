@@ -122,7 +122,7 @@ void task_IMU (void* p_params)
                 // Convert the quaternions to Euler angles (roll, pitch, yaw)
                 // https://en.wikipedia.org/w/index.php?title=Conversion_between_quaternions_and_Euler_angles&section=8#Source_code_2
 
-                double q0 = sqrt(1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3)));
+                double q0 = sqrt(1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3)));        // sqrt of negative?
 
                 double q2sqr = q2 * q2;
 
