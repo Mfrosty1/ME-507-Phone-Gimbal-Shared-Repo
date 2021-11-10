@@ -3,7 +3,8 @@
  * 	  controller with some extra functionality (low-pass filter
  *    on differentiation, integrator clamping, etc.).
  * 
- *  @author Ryan McLaughlin & Matthew Frost
+ *  @author Ryan McLaughlin
+ *  @author Matthew Frost
  *  @author pms67 (original author of files adapted)
  *  @date   11/06/2021 Code accesed from pms67 GitHub repository
  *  @date   
@@ -45,8 +46,19 @@ class PID
 		float out;
 
 	public:
+		void SetInputs(float Kp_in, 
+					   float Ki_in, 
+					   float Kd_in,
+					   float tau_in,
+					   float limMin_in,
+					   float limMax_in,
+					   float limMinInt_in,
+					   float limMaxInt_in,
+					   float T_in);
+		
 		void Init(void);
 
-        float Update(float setpoint, float measurement);
+        float Update(float setpoint, 
+					 float measurement);
 
 };
