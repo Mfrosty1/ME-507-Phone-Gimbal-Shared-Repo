@@ -102,9 +102,15 @@ float PID::Update(float setpoint, float measurement)
     }
 
 	// Band Limited Differentiation
-    differentiator = -(2.0f * Kd * (measurement - prevMeasurement)	// Note: derivative on measurement, therefore minus sign in front of equation!
-                        + (2.0f * tau - T) * differentiator)
+    differentiator = -(2.0f * Kd * (measurement - prevMeasurement)	 + (2.0f * tau - T) * differentiator)
                         / (2.0f * tau + T);
+    
+    // check for nan conditions
+    if (isnan(differentiator))
+    {
+        Serial.println("nan achieved");
+        differentiator = 0;
+    }
 
 	// Compute output and apply limits
     out = proportional + integrator + differentiator;
