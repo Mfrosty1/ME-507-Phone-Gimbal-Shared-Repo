@@ -124,7 +124,8 @@ void task_IMU (void* p_params)
                 Serial << "q0 sqrt( )" << insidesqrt;
                 if (insidesqrt < 0)
                 {
-                    Serial << "negCount = " << ++negativeCounter <<  endl;
+                    negativeCounter++;
+                    Serial << "negCount = " << negativeCounter <<  endl;
                 }
 
                 // Convert the quaternions to Euler angles (roll, pitch, yaw)
