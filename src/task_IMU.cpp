@@ -8,11 +8,14 @@
 
 #include "IMU/ICM_20948.h" // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
 #include "task_IMU.h"
+#include <PrintStream.h>
 #include "Wire.h"
 #include <Arduino.h>
 #if (defined STM32L4xx || defined STM32F4xx)
     #include <STM32FreeRTOS.h>
 #endif
+#include "taskshare.h"         // Header for inter-task shared data
+#include "taskqueue.h"         // Header for inter-task data queues
 #include "shares.h"
 
 
@@ -139,9 +142,9 @@ void task_IMU (void* p_params)
                 double t4 = +1.0 - 2.0 * (q2sqr + q3 * q3);
                 double yaw = atan2(t3, t4) * 180.0 / PI;
 
-                Serial.println(roll);
-                Serial.println(pitch);
-                Serial.println(yaw);
+                // Serial.println(roll);
+                // Serial.println(pitch);
+                // Serial.println(yaw);
 
                 pitchAngle.put(pitch);
                 rollAngle.put(roll);

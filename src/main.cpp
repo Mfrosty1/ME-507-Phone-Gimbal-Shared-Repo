@@ -22,6 +22,7 @@
 // Includes for our tasks
 #include "task_IMU.h"          // Header for IMU task
 #include "task_motor.h"        // Header for motor task
+#include "Controller/task_PID.h"
 #include "taskshare.h"         // Header for inter-task shared data
 #include "taskqueue.h"         // Header for inter-task data queues
 #include "shares.h"            // Header for shares used in this project
@@ -47,6 +48,9 @@ Share<int16_t> yMotSpeed("Yaw Motor Speed");
 // DRV8256 pitchMotor;
 
 void setup() {
+
+    // newClass myObj
+    // void* pointer = &myObj;
 
     // Begin Serial port
     Serial.begin(115200);
@@ -86,6 +90,13 @@ void setup() {
                  NULL,                            // Parameters for task fn.
                  1,                               // Priority
                  NULL);                           // Task handle
+
+    xTaskCreate (task_PID,
+                 "Controller Task",               // Task name for printouts
+                 4096,                            // Stack size
+                 NULL,                            // Parameters for task fn.
+                 1,                               // Priority
+                 NULL);                           // Task handle             
 
     // If using an STM32, we need to call the scheduler startup function now;
     // if using an ESP32, it has already been called for us
