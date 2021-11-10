@@ -91,7 +91,7 @@ float PID::Update(float setpoint, float measurement)
     // check for nan conditions
     if (isnan(proportional))
     {
-        Serial.println("prop: nan achieved");
+        // Serial.println("prop: nan achieved");
         proportional = 0;
     }
 
@@ -101,7 +101,7 @@ float PID::Update(float setpoint, float measurement)
     // check for nan conditions
     if (isnan(integrator))
     {
-        Serial.println("int: nan achieved");
+        // Serial.println("int: nan achieved");
         integrator = 0;
     }
 
@@ -122,14 +122,14 @@ float PID::Update(float setpoint, float measurement)
     // check for nan conditions
     if (isnan(differentiator))
     {
-        Serial.println("diff: nan achieved");
+        // Serial.println("diff: nan achieved");
         differentiator = 0;
     }
 
 	// Compute output and apply limits
     out = proportional + integrator + differentiator;
 
-    Serial << "PID.cpp, out = " << out << endl;
+    // Serial << "PID.cpp, out = " << out << endl;
 
     if (out > limMax) {
         out = limMax;
