@@ -44,13 +44,13 @@ void task_PID(void* p_params)
         float controlPitchSpeed = pitchController.Update( pitchSetpoint, pitchAngle.get() );
         float controlRollSpeed  = rollController.Update( rollSetpoint, rollAngle.get() );
         float controlYawSpeed   = yawController.Update( yawSetpoint, yawAngle.get() );
-        Serial.println("controller updates have been made");
+        // Serial.println("controller updates have been made");
 
         // put controller outputs into shares
         pMotSpeed.put(controlPitchSpeed);
         rMotSpeed.put(controlRollSpeed);
         yMotSpeed.put(controlYawSpeed);
-        Serial.println("controller has placed values into shares");
+        // Serial.println("controller has placed values into shares");
         
 
         // This task always runs once every 5 ms
