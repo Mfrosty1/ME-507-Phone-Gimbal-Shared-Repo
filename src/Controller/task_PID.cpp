@@ -56,6 +56,6 @@ void task_PID(void* p_params)
         
 
         // This task always runs once every 5 ms
-        vTaskDelay (5);
+        vTaskDelay (50);
     }
 }
