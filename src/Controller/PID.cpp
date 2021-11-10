@@ -15,6 +15,7 @@
 
 #include "PID.h"
 #include "Arduino.h"
+#include "PrintStream.h"
 
 
 /** @brief   Initialize controller gains and inputs.
@@ -107,6 +108,8 @@ float PID::Update(float setpoint, float measurement)
 
 	// Compute output and apply limits
     out = proportional + integrator + differentiator;
+
+    Serial << "PID.cpp, out = " << out << endl;
 
     if (out > limMax) {
         out = limMax;
