@@ -30,7 +30,7 @@ public:
 	void attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uint8_t fault_pin);
 
 	// Motor control functions:
-	void DRV8256::moveMotor(int16_t speed);
+	void moveMotor(int16_t speed);
 	void motorReverse(uint8_t speed);
 	void motorForward(uint8_t speed);
 	void motorStop();
