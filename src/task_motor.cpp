@@ -38,17 +38,16 @@ void task_motor(void* p_params)
 
     for (;;)
     {
-        Serial.print("MotTask: Pitch Angle is ");
-        Serial.println(pitchAngle.get());
+        Serial << "MT: pA " << pitchAngle.get() << ", rA " << rollAngle.get() << ", yA " << yawAngle.get() << endl;
 
         // Set the motors to their new speed
         pitchMotor.moveMotor(pMotSpeed.get());
         rollMotor.moveMotor(rMotSpeed.get());
         yawMotor.moveMotor(yMotSpeed.get());
 
-        Serial.println("MotTask: Motors set to new speed");
+        // Serial.println("MotTask: Motors set to new speed");
         // This task always runs once every 30 ms
-        vTaskDelay (30);
+        vTaskDelay (50);
         // vTaskDelay (task_param->var);
 
     }
