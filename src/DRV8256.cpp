@@ -53,6 +53,26 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 	}
 }
 
+// Combined function to run motors in both direction
+void DRV8256::moveMotor(int16_t speed)
+{
+	if (this->motorAttached) // If motor is attached...
+	{
+		if (speed > 0) // ... and speed is in forward direction
+		{
+			// ... then put it in forward.
+			analogWrite(enablePin, speed);
+			digitalWrite(phasePin, HIGH);
+		}
+		else // ... and speed is in reverse direction
+		{
+			// ... then put it in reverse.
+			analogWrite(enablePin, speed);
+			digitalWrite(phasePin, LOW);
+		}
+	}
+}
+
 // function to run motor in reverse at a specified speed
 void DRV8256::motorReverse(uint8_t speed)
 {

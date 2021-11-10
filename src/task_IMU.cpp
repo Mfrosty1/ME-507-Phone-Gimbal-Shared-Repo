@@ -147,9 +147,7 @@ void task_IMU (void* p_params)
                 rollAngle.put(roll);
                 yawAngle.put(yaw);
 
-                // return float angleArray[3] = {roll, pitch, yaw}; // Return an array of the angles
-
-                vTaskDelay(30);
+                vTaskDelay(10);
             }
         }
     }

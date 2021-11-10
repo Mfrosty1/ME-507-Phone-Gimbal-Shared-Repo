@@ -20,11 +20,13 @@
 #endif
 
 // Includes for our tasks
-#include "task_IMU.h"          // Header for square wave task module
+#include "task_IMU.h"          // Header for IMU task
+#include "task_motor.h"        // Header for motor task
 #include "taskshare.h"         // Header for inter-task shared data
 #include "taskqueue.h"         // Header for inter-task data queues
 #include "shares.h"            // Header for shares used in this project
 
+// Declare the shared variables and queues
 /// A share to hold the current pitch angle.
 Share<float> pitchAngle("Pitch Angle");
 /// A share to hold the current roll angle.
@@ -73,6 +75,13 @@ void setup() {
     // -------------- TASK DEFINITIONS -------------
     xTaskCreate (task_IMU,
                  "IMU Task",                      // Task name for printouts
+                 4096,                            // Stack size
+                 NULL,                            // Parameters for task fn.
+                 1,                               // Priority
+                 NULL);                           // Task handle
+
+    xTaskCreate (task_motor,
+                 "Motor Task",                    // Task name for printouts
                  4096,                            // Stack size
                  NULL,                            // Parameters for task fn.
                  1,                               // Priority

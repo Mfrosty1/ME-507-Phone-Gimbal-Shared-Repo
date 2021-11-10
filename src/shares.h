@@ -18,6 +18,11 @@ extern Share<bool> begin_recording;
 extern Share<float> pitchAngle;
 extern Share<float> rollAngle;
 extern Share<float> yawAngle;
+extern Share<int16_t> pMotSpeed;
+extern Share<int16_t> rMotSpeed;
+extern Share<int16_t> yMotSpeed;
+
+
 
 // A queue which triggers a task to print the count at certain times
 // extern Queue<uint16_t> data_queue;
