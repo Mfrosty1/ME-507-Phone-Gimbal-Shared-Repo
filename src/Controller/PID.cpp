@@ -88,8 +88,22 @@ float PID::Update(float setpoint, float measurement)
 	//Proportial Signal
     float proportional = Kp * error;
 
+    // check for nan conditions
+    if (isnan(proportional))
+    {
+        Serial.println("prop: nan achieved");
+        proportional = 0;
+    }
+
 	// Integral Signal
     integrator +=  0.5f*Ki*T*(error + prevError);
+
+    // check for nan conditions
+    if (isnan(integrator))
+    {
+        Serial.println("int: nan achieved");
+        integrator = 0;
+    }
 
 	// Anti-wind-up via integrator clamping 
 	// set to limits if outside bounds
@@ -108,7 +122,7 @@ float PID::Update(float setpoint, float measurement)
     // check for nan conditions
     if (isnan(differentiator))
     {
-        Serial.println("nan achieved");
+        Serial.println("diff: nan achieved");
         differentiator = 0;
     }
 
