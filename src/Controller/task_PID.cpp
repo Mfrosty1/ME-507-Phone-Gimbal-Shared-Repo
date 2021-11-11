@@ -34,9 +34,9 @@ void task_PID(void* p_params)
     yawController.SetInputs(1.0f,  1.0f, 1.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.01f);
 
     // input setpoints for each motor here
-    float pitchSetpoint = 0.0f;
-    float rollSetpoint  = 0.0f;
-    float yawSetpoint   = 0.0f;
+    float pitchSetpoint = -90.0f; // should be -90
+    float rollSetpoint  =   0.0f; // should be 0
+    float yawSetpoint   =   0.0f; // should be 0 or whichever direction it's pointing in
 
     for (;;)
     {
@@ -46,7 +46,7 @@ void task_PID(void* p_params)
         float controlYawSpeed   = yawController.Update( yawSetpoint, yawAngle.get() );
         // Serial.println("controller updates have been made");
         // Serial.println(controlYawSpeed);
-        // Serial << "Cont: p = " << controlPitchSpeed << " r = " << controlRollSpeed << " y = " << controlYawSpeed << endl;
+        Serial << "Cont: p = " << controlPitchSpeed << " r = " << controlRollSpeed << " y = " << controlYawSpeed << endl;
 
         // put controller outputs into shares
         pMotSpeed.put(controlPitchSpeed);

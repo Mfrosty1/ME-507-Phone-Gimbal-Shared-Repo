@@ -38,7 +38,6 @@ void task_motor(void* p_params)
 
     for (;;)
     {
-        Serial << "MT: pA " << pitchAngle.get() << ", rA " << rollAngle.get() << ", yA " << yawAngle.get() << endl;
 
         // Set the motors to their new speed
         pitchMotor.moveMotor(pMotSpeed.get());

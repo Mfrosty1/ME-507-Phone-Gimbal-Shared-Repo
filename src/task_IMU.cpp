@@ -118,7 +118,7 @@ void task_IMU (void* p_params)
                 double q1 = ((double)data.Quat6.Data.Q1) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q2 = ((double)data.Quat6.Data.Q2) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q3 = ((double)data.Quat6.Data.Q3) / 1073741824.0; // Convert to double. Divide by 2^30
-                Serial << "q1=" << q1 << " q2=" << q2 << " q3=" << q3 << endl;
+                // Serial << "q1=" << q1 << " q2=" << q2 << " q3=" << q3 << endl;
                 // uint32_t negativeCounter = 0;
                 // double insidesqrt = 1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3));
                 // Serial << "q0 sqrt( )" << insidesqrt;
@@ -132,34 +132,62 @@ void task_IMU (void* p_params)
                 // https://en.wikipedia.org/w/index.php?title=Conversion_between_quaternions_and_Euler_angles&section=8#Source_code_2
 
                 double q0 = sqrt(1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3)));        // sqrt of negative?
-                Serial << "q0=" << q0 << endl;
+                // Serial << "q0=" << q0 << "q1=" << q1 << " q2=" << q2 << " q3=" << q3 << endl;
                 double q2sqr = q2 * q2;
 
                 // roll (x-axis rotation)
                 double t0 = +2.0 * (q0 * q1 + q2 * q3);
                 double t1 = +1.0 - 2.0 * (q1 * q1 + q2sqr);
-                double roll = atan2(t0, t1) * 180.0 / PI;
+                // double roll = atan2(t0, t1) * 180.0 / PI; // original
+                double pitch = atan2(t0, t1) * 180.0 / PI;
 
                 // pitch (y-axis rotation)
                 double t2 = +2.0 * (q0 * q2 - q3 * q1);
                 t2 = t2 > 1.0 ? 1.0 : t2;
                 t2 = t2 < -1.0 ? -1.0 : t2;
-                double pitch = asin(t2) * 180.0 / PI;
+                // double pitch = asin(t2) * 180.0 / PI; // original 
+                double roll = asin(t2) * 180.0 / PI;
 
                 // yaw (z-axis rotation)
                 double t3 = +2.0 * (q0 * q3 + q1 * q2);
                 double t4 = +1.0 - 2.0 * (q2sqr + q3 * q3);
-                double yaw = atan2(t3, t4) * 180.0 / PI;
-                Serial << "t0=" << t0 << " t1=" << t1 << " t3=" << t3 << " t4=" << t4 << endl;
+                double yaw = atan2(t3, t4) * 180.0 / PI; // original
+                // Serial << "t0=" << t0 << " t1=" << t1 << " t3=" << t3 << " t4=" << t4 << endl;
                 // Serial.println(roll);
                 // Serial.println(pitch);
                 // Serial.println(yaw);
 
-                pitchAngle.put(pitch);
-                rollAngle.put(roll);
-                yawAngle.put(yaw);
+                // Serial << "IMU: pA " << pitch << ", rA " << roll << ", yA " << yaw << endl;
 
-                vTaskDelay(30);
+                if (isnan(pitch))
+                {
+                    Serial << "Pitch is nan. Skipping" << endl;
+                }
+                else
+                {
+                    pitchAngle.put(pitch);
+                }
+
+                if (isnan(roll))
+                {
+                    Serial << "Roll is nan. Skipping" << endl;
+                }
+                else
+                {
+                    rollAngle.put(roll);
+                }
+                
+                if (isnan(yaw))
+                {
+                    Serial << "Yaw is nan. Skipping" << endl;
+                }
+                else
+                {
+                    yawAngle.put(yaw);
+                }
+                
+
+                vTaskDelay(10);
             }
         }
     }
