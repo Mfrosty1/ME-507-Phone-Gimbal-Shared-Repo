@@ -146,12 +146,14 @@ void task_IMU (void* p_params)
                 t2 = t2 > 1.0 ? 1.0 : t2;
                 t2 = t2 < -1.0 ? -1.0 : t2;
                 // double pitch = asin(t2) * 180.0 / PI; // original 
-                double roll = asin(t2) * 180.0 / PI;
+                double yaw = asin(t2) * 180.0 / PI;
 
                 // yaw (z-axis rotation)
                 double t3 = +2.0 * (q0 * q3 + q1 * q2);
                 double t4 = +1.0 - 2.0 * (q2sqr + q3 * q3);
-                double yaw = atan2(t3, t4) * 180.0 / PI; // original
+                // double yaw = atan2(t3, t4) * 180.0 / PI; // original
+                double roll = -1*atan2(t3, t4) * 180.0 / PI; 
+
                 // Serial << "t0=" << t0 << " t1=" << t1 << " t3=" << t3 << " t4=" << t4 << endl;
                 // Serial.println(roll);
                 // Serial.println(pitch);

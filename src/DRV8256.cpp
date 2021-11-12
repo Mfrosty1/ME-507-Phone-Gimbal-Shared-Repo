@@ -17,6 +17,7 @@
 
 #include "Arduino.h"
 #include "DRV8256.h"
+#include "PrintStream.h"
 
 // constructor
 DRV8256::DRV8256()
@@ -56,6 +57,11 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 // Combined function to run motors in both direction
 void DRV8256::moveMotor(int16_t speed)
 {
+	if (digitalRead(faultPin))
+	{
+		Serial << "Fault occured" << endl;
+	}
+
 	if (this->motorAttached) // If motor is attached...
 	{
 		if (speed > 0) // ... and speed is in forward direction

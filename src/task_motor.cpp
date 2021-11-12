@@ -31,9 +31,12 @@ void task_motor(void* p_params)
     DRV8256 yawMotor;
 
     //                     IN1, IN2, SLEEP, FAULT
-    pitchMotor.attachMotor(PB9, PB8, PA5,   PA4); // Pitch motor pins
+    // pitchMotor.attachMotor(PB9, PB8, PA5,   PA4); // Pitch motor pins
+    // rollMotor.attachMotor (PB5, PB4, PA5,   PA4); // Roll motor pins 
+    // yawMotor.attachMotor  (PA8, PA9, PA6,   PA4); // Yaw motor pins 
+    pitchMotor.attachMotor(PB5, PB4, PA5,   PA4); // Pitch motor pins
     rollMotor.attachMotor (PB5, PB4, PA5,   PA4); // Roll motor pins 
-    yawMotor.attachMotor  (PA8, PA9, PA6,   PA4); // Yaw motor pins 
+    yawMotor.attachMotor  (PB5, PB4, PA5,   PA4); // Yaw motor pins 
     Serial.println("MotTask: motor objects defined");
 
     for (;;)
