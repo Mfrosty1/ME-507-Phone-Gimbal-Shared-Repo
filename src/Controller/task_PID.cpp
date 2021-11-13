@@ -28,9 +28,14 @@ void task_PID(void* p_params)
     PID rollController;
     PID yawController;
 
+    // Init the PID classes
+    pitchController.Init();
+    rollController.Init();
+    yawController.Init(); 
+
     // SetInputs(Kp, Ki, Kd, tau, min, max, minInt, maxInt, T)                   
     pitchController.SetInputs(1.0f, 0.0f, 0.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.05f);
-    rollController.SetInputs (1.0f, 0.0f, 0.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.05f);
+    rollController.SetInputs (0.5f, 0.0f, 0.5f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.05f);
     yawController.SetInputs  (1.0f, 0.0f, 0.0f,  1.0f,  -255.0f,  255.0f,  -100.0f,    100.0f,    0.05f);
 
     // input setpoints for each motor here
@@ -47,7 +52,7 @@ void task_PID(void* p_params)
         // Serial.println("controller updates have been made");
         // Serial.println(controlYawSpeed);
         //Serial << "Cont: p = " << controlPitchSpeed << " r = " << controlRollSpeed << " y = " << controlYawSpeed << endl;
-        Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
+        // Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
 
         // put controller outputs into shares
         pMotSpeed.put(controlPitchSpeed);
@@ -56,6 +61,6 @@ void task_PID(void* p_params)
         // Serial.println("controller has placed values into shares");
 
         // This task always runs once every 5 ms
-        vTaskDelay (50);
+        vTaskDelay (10);
     }
 }

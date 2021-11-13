@@ -67,13 +67,24 @@ void DRV8256::moveMotor(int16_t speed)
 		if (speed > 0) // ... and speed is in forward direction
 		{
 			// ... then put it in forward.
+			// Serial << "forward by " << speed << endl;
+			Serial << "F: " << speed << endl;
+
 			analogWrite(enablePin, speed);
 			digitalWrite(phasePin, HIGH);
 		}
-		else // ... and speed is in reverse direction
+		else if (speed < 0) // ... and speed is in reverse direction
 		{
 			// ... then put it in reverse.
-			analogWrite(enablePin, speed);
+			speed *= -1;
+			Serial << "R: " << speed << endl;
+			analogWrite(enablePin, speed); 
+			digitalWrite(phasePin, LOW);
+		}
+		else
+		{
+			Serial << "Speed is 0" << endl;
+			analogWrite(enablePin, 0);
 			digitalWrite(phasePin, LOW);
 		}
 	}

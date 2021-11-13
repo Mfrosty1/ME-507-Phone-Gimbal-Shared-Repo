@@ -104,9 +104,11 @@ void task_IMU (void* p_params)
         ; // Do nothing more
     }
 
+    icm_20948_DMP_data_t data;
+
     for (;;)
     {
-        icm_20948_DMP_data_t data;
+        // icm_20948_DMP_data_t data; // Originally this was here, Matthew moved it up a few lines out of for (;;) loop
         myICM.readDMPdataFromFIFO(&data);
 
         if ((myICM.status == ICM_20948_Stat_Ok) || (myICM.status == ICM_20948_Stat_FIFOMoreDataAvail)) // Was valid data available?
@@ -188,8 +190,8 @@ void task_IMU (void* p_params)
                     yawAngle.put(yaw);
                 }
                 
-
-                vTaskDelay(10);
+                // Serial << "IMUTask" << endl;
+                vTaskDelay(5);
             }
         }
     }

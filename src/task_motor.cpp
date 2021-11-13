@@ -41,15 +41,15 @@ void task_motor(void* p_params)
 
     for (;;)
     {
-
+        // Serial << "MTask" << endl;
         // Set the motors to their new speed
-        pitchMotor.moveMotor(pMotSpeed.get());
+        // pitchMotor.moveMotor(pMotSpeed.get());
         rollMotor.moveMotor(rMotSpeed.get());
-        yawMotor.moveMotor(yMotSpeed.get());
+        // yawMotor.moveMotor(yMotSpeed.get());
 
         // Serial.println("MotTask: Motors set to new speed");
         // This task always runs once every 30 ms
-        vTaskDelay (50);
+        vTaskDelay (10);
         // vTaskDelay (task_param->var);
 
     }
