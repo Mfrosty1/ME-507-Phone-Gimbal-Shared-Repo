@@ -34,10 +34,11 @@ public:
 	void motorReverse(uint8_t speed);
 	void motorForward(uint8_t speed);
 	void motorStop();
+	void clearFault();
 
 private:
 	// Fields for the class:
-	uint8_t enablePin, phasePin, sleepPin, faultPin;
+	uint8_t enablePin, phasePin, sleepPin, faultPin, userButton;
 	bool motorAttached = false;
 
 };

@@ -34,10 +34,17 @@ void task_motor(void* p_params)
     // pitchMotor.attachMotor(PB9, PB8, PA5,   PA4); // Pitch motor pins
     // rollMotor.attachMotor (PB5, PB4, PA5,   PA4); // Roll motor pins 
     // yawMotor.attachMotor  (PA8, PA9, PA6,   PA4); // Yaw motor pins 
-    pitchMotor.attachMotor(PB5, PB4, PA5,   PA4); // Pitch motor pins
+    // pitchMotor.attachMotor(PB5, PB4, PA5,   PA4); // Pitch motor pins
     rollMotor.attachMotor (PB5, PB4, PA5,   PA4); // Roll motor pins 
-    yawMotor.attachMotor  (PB5, PB4, PA5,   PA4); // Yaw motor pins 
+    // yawMotor.attachMotor  (PB5, PB4, PA5,   PA4); // Yaw motor pins 
+
+    // Switching the nSLEEP and nFAULT pins to see if fault is being triggered
+    // rollMotor.attachMotor (PB5, PB4, PA4,   PA5); // Roll motor pins 
     Serial.println("MotTask: motor objects defined");
+
+    // Set up USER button for clearing faults
+    // uint8_t userButton = PC13;
+    // pinMode(userButton, INPUT);
 
     for (;;)
     {
@@ -46,6 +53,17 @@ void task_motor(void* p_params)
         // pitchMotor.moveMotor(pMotSpeed.get());
         rollMotor.moveMotor(rMotSpeed.get());
         // yawMotor.moveMotor(yMotSpeed.get());
+
+        // Test to see if alternating direction messes it up. IT DOESNT
+        // rollMotor.moveMotor(100);
+        // delay(100);
+        // rollMotor.moveMotor(-100);
+        // delay(100);
+
+        // if (!digitalRead(userButton))
+        // {
+        //     rollMotor.clearFault(); // if button is pressed, clear fault.
+        // }
 
         // Serial.println("MotTask: Motors set to new speed");
         // This task always runs once every 30 ms

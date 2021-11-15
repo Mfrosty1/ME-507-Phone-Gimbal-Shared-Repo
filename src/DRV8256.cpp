@@ -35,31 +35,40 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 		this->sleepPin = sleep_pin;
 		this->faultPin = fault_pin;
 
-		Serial.println("checking fault pin");
-		Serial.print(digitalRead(faultPin));
-		Serial.print("attaching motor");
+		// Create a pin mode for the user button
+		// this->userButton = PC_13; 
+		// pinMode(userButton, INPUT);
 
 		// Attach motor to the input pins.
-		pinMode(enablePin, OUTPUT); // Set EN/IN1 pin to OUTPUT
-		pinMode(phasePin, OUTPUT);  // Set PH/IN1 pin to OUTPUT
-    	pinMode(sleepPin, OUTPUT);  // Set !SLEEP pin to OUTPUT
+		pinMode(enablePin, OUTPUT);      // Set EN/IN1 pin to OUTPUT
+		pinMode(phasePin,  OUTPUT);      // Set PH/IN1 pin to OUTPUT
+    	pinMode(sleepPin,  OUTPUT);      // Set !SLEEP pin to OUTPUT
+		pinMode(faultPin, INPUT_PULLUP); // Set the fault pin to an INPUT with PULLUP
 
 		// Show the motor is attached.
 		this->motorAttached = true;
 
-		// Initialize as LOW.
+		// Initialize pins.
 		digitalWrite(enablePin, HIGH); // Set EN to HIGH
 		digitalWrite(phasePin, LOW);   // Set PH to LOW
 		digitalWrite(sleepPin, HIGH);  // Set !SLEEP to HIGH
+
+		// Serial.print("Starting Fault Pin Value: ");
+		// Serial.println(digitalRead(faultPin));
 	}
 }
 
 // Combined function to run motors in both direction
 void DRV8256::moveMotor(int16_t speed)
 {
-	if (digitalRead(faultPin))
+	if (!digitalRead(faultPin))
 	{
 		Serial << "Fault occured" << endl;
+	}
+
+	if (!digitalRead(sleepPin))
+	{
+		Serial << "Sleep Low, Sleep Mode" << endl;
 	}
 
 	if (this->motorAttached) // If motor is attached...
@@ -67,9 +76,7 @@ void DRV8256::moveMotor(int16_t speed)
 		if (speed > 0) // ... and speed is in forward direction
 		{
 			// ... then put it in forward.
-			// Serial << "forward by " << speed << endl;
 			Serial << "F: " << speed << endl;
-
 			analogWrite(enablePin, speed);
 			digitalWrite(phasePin, HIGH);
 		}
@@ -120,8 +127,18 @@ void DRV8256::motorStop()
 		// ...then stop it.
 		analogWrite(enablePin, 0);
 		digitalWrite(phasePin, LOW);
-
 	}
 }
 
+void DRV8256::clearFault()
+{
+	if (this->motorAttached) // If motor is attached...
+	{
+		Serial << "Button pressed" << endl;
+		// Set SLEEP to low for 20-40ms
+		digitalWrite(sleepPin, LOW);
+		delay(25); // allow time to reset
+		digitalWrite(sleepPin, HIGH); // Set back to high. Fault should be cleared now.
+	}
+}
 
