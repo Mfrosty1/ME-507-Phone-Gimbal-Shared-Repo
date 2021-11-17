@@ -46,7 +46,9 @@ void task_IMU (void* p_params)
 
     // Complete the setup for the WIREPORT
     ourWire.begin();
-    ourWire.setClock(400000);
+    // ourWire.setClock(400000); // Fast mode, this was the original code
+    ourWire.setClock(100000); // Normal/slow mode, Matthew is trying this
+
 
     bool initialized = false;
     while (!initialized)
@@ -104,11 +106,11 @@ void task_IMU (void* p_params)
         ; // Do nothing more
     }
 
-    icm_20948_DMP_data_t data;
+    // icm_20948_DMP_data_t data;
 
     for (;;)
     {
-        // icm_20948_DMP_data_t data; // Originally this was here, Matthew moved it up a few lines out of for (;;) loop
+        icm_20948_DMP_data_t data; // Originally this was here, Matthew moved it up a few lines out of for (;;) loop
         myICM.readDMPdataFromFIFO(&data);
 
         if ((myICM.status == ICM_20948_Stat_Ok) || (myICM.status == ICM_20948_Stat_FIFOMoreDataAvail)) // Was valid data available?
@@ -120,6 +122,10 @@ void task_IMU (void* p_params)
                 double q1 = ((double)data.Quat6.Data.Q1) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q2 = ((double)data.Quat6.Data.Q2) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q3 = ((double)data.Quat6.Data.Q3) / 1073741824.0; // Convert to double. Divide by 2^30
+                // if (q1 > 0.5)
+                // {
+                //     q1 = 0.49;
+                // }
                 // Serial << "q1=" << q1 << " q2=" << q2 << " q3=" << q3 << endl;
                 // uint32_t negativeCounter = 0;
                 // double insidesqrt = 1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3));
@@ -134,14 +140,14 @@ void task_IMU (void* p_params)
                 // https://en.wikipedia.org/w/index.php?title=Conversion_between_quaternions_and_Euler_angles&section=8#Source_code_2
 
                 double q0 = sqrt(1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3)));        // sqrt of negative?
-                // Serial << "q0=" << q0 << "q1=" << q1 << " q2=" << q2 << " q3=" << q3 << endl;
+                // Serial << "q0=" << q0 << ", q1=" << q1 << ", q2=" << q2 << ", q3=" << q3 << endl;
                 double q2sqr = q2 * q2;
 
                 // roll (x-axis rotation)
                 double t0 = +2.0 * (q0 * q1 + q2 * q3);
                 double t1 = +1.0 - 2.0 * (q1 * q1 + q2sqr);
                 // double roll = atan2(t0, t1) * 180.0 / PI; // original
-                double pitch = atan2(t0, t1) * 180.0 / PI;
+                double pitch = -1*atan2(t0, t1) * 180.0 / PI;
 
                 // pitch (y-axis rotation)
                 double t2 = +2.0 * (q0 * q2 - q3 * q1);
@@ -161,7 +167,7 @@ void task_IMU (void* p_params)
                 // Serial.println(pitch);
                 // Serial.println(yaw);
 
-                // Serial << "IMU: pA " << pitch << ", rA " << roll << ", yA " << yaw << endl;
+                Serial << "IMU: pA " << pitch << ", rA " << roll << ", yA " << yaw << endl;
 
                 if (isnan(pitch))
                 {

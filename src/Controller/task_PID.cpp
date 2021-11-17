@@ -34,17 +34,18 @@ void task_PID(void* p_params)
     yawController.Init(); 
 
     // SetInputs(Kp, Ki, Kd, tau, min, max, minInt, maxInt, T)                   
-    pitchController.SetInputs(1.0f, 0.0f, 0.0f,  1.0f,  -25.0f,  25.0f,  -100.0f,    100.0f,    0.05f);
-    rollController.SetInputs (0.5f, 0.0f, 0.5f,  1.0f,  -25.0f,  25.0f,  -100.0f,    100.0f,    0.05f);
-    yawController.SetInputs  (1.0f, 0.0f, 0.0f,  1.0f,  -25.0f,  25.0f,  -100.0f,    100.0f,    0.05f);
+    pitchController.SetInputs(1.0f, 0.0f, 0.0f,  1.0f,  -10.0f,  10.0f,  -100.0f,    100.0f,    0.05f);
+    rollController.SetInputs (0.5f, 0.0f, 0.5f,  1.0f,  -10.0f,  10.0f,  -100.0f,    100.0f,    0.05f);
+    yawController.SetInputs  (1.0f, 0.0f, 0.0f,  1.0f,  -10.0f,  10.0f,  -100.0f,    100.0f,    0.05f);
 
     // input setpoints for each motor here
-    float pitchSetpoint = -90.0f; // should be -90
+    float pitchSetpoint =  -90.0f; // should be -90 
     float rollSetpoint  =   0.0f; // should be 0
     float yawSetpoint   =   0.0f; // should be 0 or whichever direction it's pointing in
 
     for (;;)
     {
+        // Serial << "PID here" << endl; // for testing purposes
         // get updated controller outputs based on setpoint and values from IMU
         float controlPitchSpeed = pitchController.Update( pitchSetpoint, pitchAngle.get() );
         float controlRollSpeed  = rollController.Update( rollSetpoint, rollAngle.get() );
@@ -52,7 +53,7 @@ void task_PID(void* p_params)
         // Serial.println("controller updates have been made");
         // Serial.println(controlYawSpeed);
         //Serial << "Cont: p = " << controlPitchSpeed << " r = " << controlRollSpeed << " y = " << controlYawSpeed << endl;
-        // Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
+        Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
 
         // put controller outputs into shares
         pMotSpeed.put(controlPitchSpeed);

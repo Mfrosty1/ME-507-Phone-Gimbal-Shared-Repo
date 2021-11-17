@@ -61,6 +61,7 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 // Combined function to run motors in both direction
 void DRV8256::moveMotor(int16_t speed)
 {
+	// Serial << "Fpin = " << digitalRead(faultPin) << endl;
 	if (!digitalRead(faultPin))
 	{
 		Serial << "Fault occured" << endl;
@@ -76,7 +77,7 @@ void DRV8256::moveMotor(int16_t speed)
 		if (speed > 0) // ... and speed is in forward direction
 		{
 			// ... then put it in forward.
-			Serial << "F: " << speed << endl;
+			// Serial << "F: " << speed << endl;
 			analogWrite(enablePin, speed);
 			digitalWrite(phasePin, HIGH);
 		}
@@ -84,13 +85,13 @@ void DRV8256::moveMotor(int16_t speed)
 		{
 			// ... then put it in reverse.
 			speed *= -1;
-			Serial << "R: " << speed << endl;
+			// Serial << "R: " << speed << endl;
 			analogWrite(enablePin, speed); 
 			digitalWrite(phasePin, LOW);
 		}
 		else
 		{
-			Serial << "Speed is 0" << endl;
+			// Serial << "Speed is 0" << endl;
 			analogWrite(enablePin, 0);
 			digitalWrite(phasePin, LOW);
 		}
