@@ -6,7 +6,7 @@
  */
 
 // Includes for IMU stuff
-#include "IMU/ICM_20948.h" // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
+// #include "IMU/ICM_20948.h" // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
 #include "Wire.h"
 
 // Includes for motor driver stuff
@@ -20,10 +20,11 @@
 #endif
 
 // Includes for our tasks
-#include "task_IMU.h"            // Header for IMU task
+// #include "task_IMU.h"            // Header for IMU task
 #include "task_motor.h"          // Header for motor task
 #include "Controller/task_PID.h" // Header for controller 
 #include "task_simplePrint.h"
+#include "task_BNO055.h"
 #include "taskshare.h"           // Header for inter-task shared data
 #include "taskqueue.h"           // Header for inter-task data queues
 #include "shares.h"              // Header for shares used in this project
@@ -55,28 +56,16 @@ void setup() {
     delay(5000);
     Serial.println("Initializing pins");
 
-    // --------- WORKING MOTOR STUFF --------------
-    // // PB5 = D4, PB4 = D5, PA5 = D13, PA6 = D12
-    // pitchMotor.attachMotor(PB5, PB4, PA5, PA6);     
-
-    // pitchMotor.motorForward(20);
-    // delay(2000);
-    // pitchMotor.motorForward(255);
-    
-    // // delay(2000);
-    // // pitchMotor.motorStop();
-    // // delay(2000);
-    // pitchMotor.motorReverse(100);
-    // delay(2000);
-    // pitchMotor.motorReverse(255);
-    // delay(2000);
-    // pitchMotor.motorStop();
-    // ---------------------------------------------
-    
-
     // -------------- TASK DEFINITIONS -------------
-    xTaskCreate (task_IMU,
-                 "IMU Task",                      // Task name for printouts
+    // xTaskCreate (task_IMU,
+    //              "IMU Task",                      // Task name for printouts
+    //              8192,                            // Stack size
+    //              NULL,                            // Parameters for task fn.
+    //              1,                               // Priority
+    //              NULL);                           // Task handle
+
+    xTaskCreate (task_BNO055,
+                 "BNO Task",                      // Task name for printouts
                  8192,                            // Stack size
                  NULL,                            // Parameters for task fn.
                  1,                               // Priority
@@ -84,7 +73,7 @@ void setup() {
 
     xTaskCreate (task_simplePrint,
                  "Simple Print",                   // Task name for printouts
-                 8192,                            // Stack size
+                 1024,                            // Stack size
                  NULL,                            // Parameters for task fn.
                  1,                               // Priority
                  NULL);                           // Task handle
@@ -105,6 +94,7 @@ void setup() {
 
     // If using an STM32, we need to call the scheduler startup function now;
     // if using an ESP32, it has already been called for us
+    
     #if (defined STM32L4xx || defined STM32F4xx)
         vTaskStartScheduler ();
     #endif             
