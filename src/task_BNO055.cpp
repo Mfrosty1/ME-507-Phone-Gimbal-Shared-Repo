@@ -19,7 +19,6 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
-#include "getEuler.h"
 
 /** @brief   Task which produces creates pin objects for the IMU and gets necessary data.
  *  @details This will come later
@@ -30,7 +29,6 @@ void task_BNO055 (void* p_params)
     (void)p_params; // Shuts up a compiler warning
 
     Serial.begin(115200); // Start the serial console
-    Serial << "Starting BNO055 Task" << endl;
 
     /* Set the delay between fresh samples */
     uint16_t BNO055_SAMPLERATE_DELAY_MS = 100; // Can probably get rid of this
@@ -39,7 +37,6 @@ void task_BNO055 (void* p_params)
     uint8_t SCL = PC0; // Same thing as A5
     TwoWire ourWire(SDA, SCL);
     Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &ourWire); // matthew is testing A4 and A5, this worked in test script
-    Serial << "started bno" << endl;
 
     /* Initialise the sensor */
     if (!bno.begin())
@@ -52,20 +49,34 @@ void task_BNO055 (void* p_params)
     {
         Serial << "bno is connected properly" << endl;
     }
-    delay(4000); // For initialization purposes
-
-    getEuler myIMUData; // Defn for the printEvent class
-    Serial << "right before the forever loop" << endl;
+    delay(1000); // For initialization purposes
 
     for (;;)
     {
         sensors_event_t orientationData;
         bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
+
+        sensors_event_t* event = &orientationData;
+        if (event->type == SENSOR_TYPE_ORIENTATION) 
+        {
+            double yaw = event->orientation.x - 180; // yaw
+            double roll = event->orientation.y; // roll
+            double pitch = event->orientation.z; // pitch
+            yawAngle.put(yaw);
+            rollAngle.put(roll);
+            pitchAngle.put(pitch);
+            // Serial << "yaw = " << yaw << ", roll = " << roll << ", pitch = " << pitch <<  endl;
+        }
+        else 
+        {
+            Serial.print("Unk:");
+        }
+
         // printEvent(&orientationData); // Original when function was in this file
-        myIMUData.printEvent(&orientationData); // New one once function was moved to getEuler class
+        // myIMUData.printEvent(&orientationData); // New one once function was moved to getEuler class
         uint8_t system, gyro, accel, mag = 0;
         bno.getCalibration(&system, &gyro, &accel, &mag);
 
-        vTaskDelay(50); // Matthew moved it to here
+        vTaskDelay(50); 
     }
 }

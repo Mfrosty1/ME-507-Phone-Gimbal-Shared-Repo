@@ -12,6 +12,10 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
 #include <utility/imumaths.h>
+// #include <baseshare.h> 
+// #include "taskshare.h"           // Header for inter-task shared data
+// #include "taskqueue.h"           // Header for inter-task data queues
+// #include "shares.h"              // Header for shares used in this project
 
 /** @brief   
  *  @details 
@@ -28,9 +32,16 @@ void getEuler::printEvent(sensors_event_t* event)
     z = -1000000; //dumb values, easy to spot problem
     if (event->type == SENSOR_TYPE_ORIENTATION) 
     {
-        x = event->orientation.x;
-        y = event->orientation.y;
-        z = event->orientation.z;
+        x = event->orientation.x; // yaw
+        y = event->orientation.y; // roll
+        z = event->orientation.z; // pitch
+        x -= 180; // modify
+        y -= 180; // modify
+        z -= 180; // modify
+        // yawAngle.put(x);
+        // rollAngle.put(y);
+        // pitchAngle.put(z);
+
     }
     else 
     {

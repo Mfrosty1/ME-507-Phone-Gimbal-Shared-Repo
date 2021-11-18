@@ -71,26 +71,26 @@ void setup() {
                  1,                               // Priority
                  NULL);                           // Task handle
 
-    xTaskCreate (task_simplePrint,
-                 "Simple Print",                   // Task name for printouts
-                 1024,                            // Stack size
-                 NULL,                            // Parameters for task fn.
-                 1,                               // Priority
-                 NULL);                           // Task handle
-
-    // xTaskCreate (task_motor,
-    //              "Motor Task",                    // Task name for printouts
-    //              4096,                            // Stack size
+    // xTaskCreate (task_simplePrint,
+    //              "Simple Print",                   // Task name for printouts
+    //              1024,                            // Stack size
     //              NULL,                            // Parameters for task fn.
     //              1,                               // Priority
     //              NULL);                           // Task handle
 
-    // xTaskCreate (task_PID,
-    //              "Controller Task",               // Task name for printouts
-    //              4096,                            // Stack size
-    //              NULL,                            // Parameters for task fn.
-    //              1,                               // Priority
-    //              NULL);                           // Task handle             
+    xTaskCreate (task_motor,
+                 "Motor Task",                    // Task name for printouts
+                 4096,                            // Stack size
+                 NULL,                            // Parameters for task fn.
+                 1,                               // Priority
+                 NULL);                           // Task handle
+
+    xTaskCreate (task_PID,
+                 "Controller Task",               // Task name for printouts
+                 4096,                            // Stack size
+                 NULL,                            // Parameters for task fn.
+                 1,                               // Priority
+                 NULL);                           // Task handle             
 
     // If using an STM32, we need to call the scheduler startup function now;
     // if using an ESP32, it has already been called for us
