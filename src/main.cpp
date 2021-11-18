@@ -23,6 +23,7 @@
 #include "task_IMU.h"            // Header for IMU task
 #include "task_motor.h"          // Header for motor task
 #include "Controller/task_PID.h" // Header for controller 
+#include "task_simplePrint.h"
 #include "taskshare.h"           // Header for inter-task shared data
 #include "taskqueue.h"           // Header for inter-task data queues
 #include "shares.h"              // Header for shares used in this project
@@ -76,7 +77,14 @@ void setup() {
     // -------------- TASK DEFINITIONS -------------
     xTaskCreate (task_IMU,
                  "IMU Task",                      // Task name for printouts
-                 4096,                            // Stack size
+                 8192,                            // Stack size
+                 NULL,                            // Parameters for task fn.
+                 1,                               // Priority
+                 NULL);                           // Task handle
+
+    xTaskCreate (task_simplePrint,
+                 "Simple Print",                   // Task name for printouts
+                 8192,                            // Stack size
                  NULL,                            // Parameters for task fn.
                  1,                               // Priority
                  NULL);                           // Task handle

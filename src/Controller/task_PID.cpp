@@ -62,6 +62,6 @@ void task_PID(void* p_params)
         // Serial.println("controller has placed values into shares");
 
         // This task always runs once every 5 ms
-        vTaskDelay (10);
+        vTaskDelay (50);
     }
 }

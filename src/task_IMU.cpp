@@ -18,9 +18,6 @@
 #include "taskqueue.h"         // Header for inter-task data queues
 #include "shares.h"
 
-
-
-
 /** @brief   Task which produces creates pin objects for the IMU and gets necessary data.
  *  @details This will come later
  *  @param   p_params A pointer to function parameters which we don't use.
@@ -35,7 +32,8 @@ void task_IMU (void* p_params)
     uint8_t SCL = PC0; // Same thing as A5
 
     // Define a WIREPORT object
-    TwoWire ourWire(SDA, SCL);
+    // TwoWire ourWire(SDA, SCL);
+    TwoWire ourWire(D14, D15); // for testing with the usual SDA/SCL pins
 
     #define AD0_VAL 1  // The value of the last bit of the I2C address.                
                        // On the SparkFun 9DoF IMU breakout the default is 1, and when 
@@ -46,9 +44,8 @@ void task_IMU (void* p_params)
 
     // Complete the setup for the WIREPORT
     ourWire.begin();
-    // ourWire.setClock(400000); // Fast mode, this was the original code
-    ourWire.setClock(100000); // Normal/slow mode, Matthew is trying this
-
+    ourWire.setClock(400000); // Fast mode, this was the original code
+    // ourWire.setClock(100000); // Normal/slow mode, Matthew is trying this
 
     bool initialized = false;
     while (!initialized)
@@ -62,9 +59,9 @@ void task_IMU (void* p_params)
         if (myICM.status != ICM_20948_Stat_Ok)
         {
             #ifndef QUAT_ANIMATION
-            Serial.println(F("Trying again..."));
+                Serial.println(F("Trying again..."));
             #endif
-            delay(500);
+                delay(500);
         }
         else
         {
@@ -74,6 +71,10 @@ void task_IMU (void* p_params)
 
     #ifndef QUAT_ANIMATION
       Serial.println(F("Device connected!"));
+    #endif
+    
+    #ifndef QUAT_ANIMATION
+        myICM.enableDebugging(); // Uncomment this line to enable helpful debug messages on Serial
     #endif
 
     bool success = true; // Use success to show if the DMP configuration was successful
@@ -106,7 +107,9 @@ void task_IMU (void* p_params)
         ; // Do nothing more
     }
 
-    // icm_20948_DMP_data_t data;
+    // icm_20948_DMP_data_t data; // Matthew thinks this should go here, but not sure
+
+    uint8_t counter = 0; // Counter to only print a certain number of print statements
 
     for (;;)
     {
@@ -122,19 +125,6 @@ void task_IMU (void* p_params)
                 double q1 = ((double)data.Quat6.Data.Q1) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q2 = ((double)data.Quat6.Data.Q2) / 1073741824.0; // Convert to double. Divide by 2^30
                 double q3 = ((double)data.Quat6.Data.Q3) / 1073741824.0; // Convert to double. Divide by 2^30
-                // if (q1 > 0.5)
-                // {
-                //     q1 = 0.49;
-                // }
-                // Serial << "q1=" << q1 << " q2=" << q2 << " q3=" << q3 << endl;
-                // uint32_t negativeCounter = 0;
-                // double insidesqrt = 1.0 - ((q1 * q1) + (q2 * q2) + (q3 * q3));
-                // Serial << "q0 sqrt( )" << insidesqrt;
-                // if (insidesqrt < 0)
-                // {
-                //     negativeCounter++;
-                //     Serial << "negCount = " << negativeCounter <<  endl;
-                // }
 
                 // Convert the quaternions to Euler angles (roll, pitch, yaw)
                 // https://en.wikipedia.org/w/index.php?title=Conversion_between_quaternions_and_Euler_angles&section=8#Source_code_2
@@ -167,7 +157,16 @@ void task_IMU (void* p_params)
                 // Serial.println(pitch);
                 // Serial.println(yaw);
 
-                Serial << "IMU: pA " << pitch << ", rA " << roll << ", yA " << yaw << endl;
+                if (counter > 5)
+                {
+                    Serial << "IMU: pA " << pitch << ", rA " << roll << ", yA " << yaw << endl;
+                    counter = 0;
+                }
+                else
+                {
+                    counter++;
+                }
+                    
 
                 if (isnan(pitch))
                 {
@@ -197,8 +196,17 @@ void task_IMU (void* p_params)
                 }
                 
                 // Serial << "IMUTask" << endl;
-                vTaskDelay(5);
+                // vTaskDelay(5); // Originally was here
+                
+            }
+
+            // Matthew added this but doesn't think it belongs. 
+            if (myICM.status != ICM_20948_Stat_FIFOMoreDataAvail) // If more data is available then we should read it right away - and not delay
+            {
+                delay(10);
             }
         }
+
+        vTaskDelay(25); // Matthew moved it to here
     }
 }

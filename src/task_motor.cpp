@@ -61,7 +61,7 @@ void task_motor(void* p_params)
         // }
 
         // This task always runs once every 30 ms
-        vTaskDelay (10);
+        vTaskDelay (50);
         // vTaskDelay (task_param->var);
 
     }
