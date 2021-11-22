@@ -52,6 +52,7 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 		digitalWrite(enablePin, HIGH); // Set EN to HIGH
 		digitalWrite(phasePin, LOW);   // Set PH to LOW
 		digitalWrite(sleepPin, HIGH);  // Set !SLEEP to HIGH
+		Serial << "motor pins defined" << endl;
 
 		// Serial.print("Starting Fault Pin Value: ");
 		// Serial.println(digitalRead(faultPin));

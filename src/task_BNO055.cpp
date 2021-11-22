@@ -30,9 +30,6 @@ void task_BNO055 (void* p_params)
 
     Serial.begin(115200); // Start the serial console
 
-    /* Set the delay between fresh samples */
-    uint16_t BNO055_SAMPLERATE_DELAY_MS = 100; // Can probably get rid of this
-
     uint8_t SDA = PC1; // Same thing as A4
     uint8_t SCL = PC0; // Same thing as A5
     TwoWire ourWire(SDA, SCL);
@@ -72,8 +69,6 @@ void task_BNO055 (void* p_params)
             Serial.print("Unk:");
         }
 
-        // printEvent(&orientationData); // Original when function was in this file
-        // myIMUData.printEvent(&orientationData); // New one once function was moved to getEuler class
         uint8_t system, gyro, accel, mag = 0;
         bno.getCalibration(&system, &gyro, &accel, &mag);
 

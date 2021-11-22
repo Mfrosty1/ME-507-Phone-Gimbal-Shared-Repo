@@ -30,35 +30,24 @@ void task_motor(void* p_params)
     DRV8256 rollMotor;
     DRV8256 yawMotor;
 
-    //                     IN1, IN2, SLEEP, FAULT
-    // pitchMotor.attachMotor(PB9, PB8, PA5,   PA4); // Pitch motor pins
-    // rollMotor.attachMotor (PB5, PB4, PA5,   PA4); // Roll motor pins 
-    // yawMotor.attachMotor  (PA8, PA9, PA6,   PA4); // Yaw motor pins 
-    // pitchMotor.attachMotor(PB5, PB4, PA5,   PA4); // Pitch motor pins
-    // rollMotor.attachMotor (PB5, PB4, PA5,   PA4); // Roll motor pins 
-    rollMotor.attachMotor (PB5, PB4, PA7,   PA4); // Roll motor pins 
+    //                     IN1/EN, IN2/PH, SLEEP, FAULT
+    rollMotor.attachMotor (PB4,    PB5,    PA5,   PA4); // Roll motor pins with PCB
+    pitchMotor.attachMotor(PB8,    PB9,    PA5,   PA4); // Pitch motor pins
+    // yawMotor.attachMotor  (PA8,  PA9, PA6,   PA4); // Yaw motor pins 
 
-    // yawMotor.attachMotor  (PB5, PB4, PA5,   PA4); // Yaw motor pins 
+    // rollMotor.attachMotor (PB5,  PB4, PA7,   PA4); // Roll motor pins with breakout board
 
-    // Switching the nSLEEP and nFAULT pins to see if fault is being triggered
-    // rollMotor.attachMotor (PB5, PB4, PA4,   PA5); // Roll motor pins 
     Serial.println("MotTask: motor objects defined");
 
-    // Set up USER button for clearing faults
-    // uint8_t userButton = PC13;
-    // pinMode(userButton, INPUT);
 
     for (;;)
     {
         // Set the motors to their new speed
-        // pitchMotor.moveMotor(pMotSpeed.get());
+        pitchMotor.moveMotor(pMotSpeed.get());
         rollMotor.moveMotor(rMotSpeed.get());
         // yawMotor.moveMotor(yMotSpeed.get());
 
-        // if (!digitalRead(userButton))
-        // {
-        //     rollMotor.clearFault(); // if button is pressed, clear fault.
-        // }
+  
 
         // This task always runs once every 30 ms
         vTaskDelay (50);
