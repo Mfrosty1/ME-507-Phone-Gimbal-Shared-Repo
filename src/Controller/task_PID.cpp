@@ -53,7 +53,7 @@ void task_PID(void* p_params)
         // Serial.println("controller updates have been made");
         // Serial.println(controlYawSpeed);
         //Serial << "Cont: p = " << controlPitchSpeed << " r = " << controlRollSpeed << " y = " << controlYawSpeed << endl;
-        Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
+        Serial << " r = " << controlYawSpeed << ", angle = " << yawAngle.get() << endl;
 
         // put controller outputs into shares
         pMotSpeed.put(controlPitchSpeed);

@@ -60,8 +60,8 @@ void task_BNO055 (void* p_params)
         if (event->type == SENSOR_TYPE_ORIENTATION) 
         {
             double yaw = event->orientation.x - 180; // yaw
-            double roll = event->orientation.y; // roll
-            double pitch = event->orientation.z; // pitch
+            double roll = -1*event->orientation.y; // roll
+            double pitch = -1*event->orientation.z; // pitch
             yawAngle.put(yaw);
             rollAngle.put(roll);
             pitchAngle.put(pitch);
