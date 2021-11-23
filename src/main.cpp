@@ -43,9 +43,6 @@ Share<int16_t> rMotSpeed("Roll Motor Speed");
 /// A share to hold the desired yaw motor speed.
 Share<int16_t> yMotSpeed("Yaw Motor Speed");
 
-// An example queue just in case we need it
-// Queue<uint16_t> data_queue (100, "Data");
-
 void setup() {
 
     // newClass myObj
@@ -57,26 +54,12 @@ void setup() {
     Serial.println("Initializing pins");
 
     // -------------- TASK DEFINITIONS -------------
-    // xTaskCreate (task_IMU,
-    //              "IMU Task",                      // Task name for printouts
-    //              8192,                            // Stack size
-    //              NULL,                            // Parameters for task fn.
-    //              1,                               // Priority
-    //              NULL);                           // Task handle
-
     xTaskCreate (task_BNO055,
                  "BNO Task",                      // Task name for printouts
                  8192,                            // Stack size
                  NULL,                            // Parameters for task fn.
                  1,                               // Priority
                  NULL);                           // Task handle
-
-    // xTaskCreate (task_simplePrint,
-    //              "Simple Print",                   // Task name for printouts
-    //              1024,                            // Stack size
-    //              NULL,                            // Parameters for task fn.
-    //              1,                               // Priority
-    //              NULL);                           // Task handle
 
     xTaskCreate (task_motor,
                  "Motor Task",                    // Task name for printouts
@@ -94,7 +77,6 @@ void setup() {
 
     // If using an STM32, we need to call the scheduler startup function now;
     // if using an ESP32, it has already been called for us
-    
     #if (defined STM32L4xx || defined STM32F4xx)
         vTaskStartScheduler ();
     #endif             

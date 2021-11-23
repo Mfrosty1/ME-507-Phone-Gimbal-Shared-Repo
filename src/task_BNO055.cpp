@@ -33,7 +33,7 @@ void task_BNO055 (void* p_params)
     uint8_t SDA = PC1; // Same thing as A4
     uint8_t SCL = PC0; // Same thing as A5
     TwoWire ourWire(SDA, SCL);
-    Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &ourWire); // matthew is testing A4 and A5, this worked in test script
+    Adafruit_BNO055 bno = Adafruit_BNO055(55, 0x28, &ourWire); 
 
     /* Initialise the sensor */
     if (!bno.begin())
