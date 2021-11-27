@@ -116,8 +116,7 @@ float PID::Update(float setpoint, float measurement)
     }
 
 	// Band Limited Differentiation
-    differentiator = -(2.0f * Kd * (measurement - prevMeasurement)	 + (2.0f * tau - T) * differentiator)
-                        / (2.0f * tau + T);
+    differentiator = -(2.0f*Kd*(measurement - prevMeasurement) + (2.0f*tau - T)*differentiator)/(2.0f*tau + T);
     
     // check for nan conditions
     if (isnan(differentiator))
@@ -129,14 +128,13 @@ float PID::Update(float setpoint, float measurement)
 	// Compute output and apply limits
     out = proportional + integrator + differentiator;
 
-    // Serial << "PID.cpp, out = " << out << endl;
-
-    if (out > limMax) {
+    if (out > limMax) 
+    {
         out = limMax;
-
-    } else if (out < limMin) {
+    } 
+    else if (out < limMin) 
+    {
         out = limMin;
-
     }
 
 	// Store error and measurement for later use

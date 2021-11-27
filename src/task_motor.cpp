@@ -24,7 +24,6 @@
  */
 void task_motor(void* p_params)
 {
-    // newClass* task_params = (newClass*)p_params;
     // Make 3 objects of the DRV8256 class
     DRV8256 pitchMotor;
     DRV8256 rollMotor;
@@ -33,7 +32,7 @@ void task_motor(void* p_params)
     //                     IN1/EN, IN2/PH, SLEEP, FAULT
     rollMotor.attachMotor (PB4,    PB5,    PA5,   PA4); // Roll motor pins with PCB
     pitchMotor.attachMotor(PB8,    PB9,    PA5,   PA4); // Pitch motor pins
-    yawMotor.attachMotor  (PA9,    PA8,    PA6,   PA4); // Yaw motor pins 
+    // yawMotor.attachMotor  (PA9,    PA8,    PA6,   PA4); // Yaw motor pins 
     // rollMotor.attachMotor (PB5,  PB4, PA7,   PA4); // Roll motor pins with breakout board
 
     Serial.println("MotTask: motor objects defined");
@@ -43,11 +42,9 @@ void task_motor(void* p_params)
         // Set the motors to their new speed
         pitchMotor.moveMotor(pMotSpeed.get());
         rollMotor.moveMotor(rMotSpeed.get());
-        yawMotor.moveMotor(yMotSpeed.get());
+        // yawMotor.moveMotor(yMotSpeed.get());
 
-        // This task always runs once every 30 ms
-        vTaskDelay (50);
-        // vTaskDelay (task_param->var);
-
+        // This task always runs once every 40 ms
+        vTaskDelay (40);
     }
 }

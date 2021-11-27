@@ -35,10 +35,6 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 		this->sleepPin = sleep_pin;
 		this->faultPin = fault_pin;
 
-		// Create a pin mode for the user button
-		// this->userButton = PC_13; 
-		// pinMode(userButton, INPUT);
-
 		// Attach motor to the input pins.
 		pinMode(enablePin, OUTPUT);      // Set EN/IN1 pin to OUTPUT
 		pinMode(phasePin,  OUTPUT);      // Set PH/IN1 pin to OUTPUT
@@ -53,16 +49,12 @@ void DRV8256::attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uin
 		digitalWrite(phasePin, LOW);   // Set PH to LOW
 		digitalWrite(sleepPin, HIGH);  // Set !SLEEP to HIGH
 		Serial << "motor pins defined" << endl;
-
-		// Serial.print("Starting Fault Pin Value: ");
-		// Serial.println(digitalRead(faultPin));
 	}
 }
 
 // Combined function to run motors in both direction
 void DRV8256::moveMotor(int16_t speed)
 {
-	// Serial << "Fpin = " << digitalRead(faultPin) << endl;
 	if (!digitalRead(faultPin))
 	{
 		Serial << "Fault occured" << endl;
@@ -78,7 +70,6 @@ void DRV8256::moveMotor(int16_t speed)
 		if (speed > 0) // ... and speed is in forward direction
 		{
 			// ... then put it in forward.
-			// Serial << "F: " << speed << endl;
 			analogWrite(enablePin, speed);
 			digitalWrite(phasePin, HIGH);
 		}
@@ -86,13 +77,11 @@ void DRV8256::moveMotor(int16_t speed)
 		{
 			// ... then put it in reverse.
 			speed *= -1;
-			// Serial << "R: " << speed << endl;
 			analogWrite(enablePin, speed); 
 			digitalWrite(phasePin, LOW);
 		}
 		else
 		{
-			// Serial << "Speed is 0" << endl;
 			analogWrite(enablePin, 0);
 			digitalWrite(phasePin, LOW);
 		}
@@ -143,4 +132,3 @@ void DRV8256::clearFault()
 		digitalWrite(sleepPin, HIGH); // Set back to high. Fault should be cleared now.
 	}
 }
-
