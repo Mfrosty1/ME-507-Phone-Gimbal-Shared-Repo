@@ -71,6 +71,7 @@ void DRV8256::moveMotor(int16_t speed)
 		{
 			// ... then put it in forward.
 			analogWrite(enablePin, speed);
+			analogWriteFrequency(20000);
 			digitalWrite(phasePin, HIGH);
 		}
 		else if (speed < 0) // ... and speed is in reverse direction
@@ -78,11 +79,13 @@ void DRV8256::moveMotor(int16_t speed)
 			// ... then put it in reverse.
 			speed *= -1;
 			analogWrite(enablePin, speed); 
+			analogWriteFrequency(20000);
 			digitalWrite(phasePin, LOW);
 		}
 		else
 		{
 			analogWrite(enablePin, 0);
+			analogWriteFrequency(20000);
 			digitalWrite(phasePin, LOW);
 		}
 	}
@@ -95,6 +98,7 @@ void DRV8256::motorReverse(uint8_t speed)
 	{
 		// ...then put it in reverse.
 		analogWrite(enablePin, speed);
+		analogWriteFrequency(20000);
 		digitalWrite(phasePin, LOW);
 	}
 }
@@ -106,6 +110,7 @@ void DRV8256::motorForward(uint8_t speed)
 	{
 		// ...then put it in forward.
 		analogWrite(enablePin, speed);
+		analogWriteFrequency(20000);
 		digitalWrite(phasePin, HIGH);
 	}
 }
@@ -117,6 +122,7 @@ void DRV8256::motorStop()
 	{
 		// ...then stop it.
 		analogWrite(enablePin, 0);
+		analogWriteFrequency(20000);
 		digitalWrite(phasePin, LOW);
 	}
 }

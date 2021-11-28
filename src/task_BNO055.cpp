@@ -47,31 +47,48 @@ void task_BNO055 (void* p_params)
         Serial << "bno is connected properly" << endl;
     }
     delay(1000); // For initialization purposes
+    uint8_t state = 0; // Set state machine to state 0
+    double firstYaw = 0; // Initialize firstYaw
 
     for (;;)
     {
+        
         sensors_event_t orientationData;
         bno.getEvent(&orientationData, Adafruit_BNO055::VECTOR_EULER);
 
         sensors_event_t* event = &orientationData;
-        if (event->type == SENSOR_TYPE_ORIENTATION) 
+
+        if (state == 0)
         {
-            double yaw = event->orientation.x - 180; // yaw
-            double roll = -1*event->orientation.y; // roll
-            double pitch = -1*event->orientation.z; // pitch
-            yawAngle.put(yaw);
-            rollAngle.put(roll);
-            pitchAngle.put(pitch);
-            // Serial << "yaw = " << yaw << ", roll = " << roll << ", pitch = " << pitch <<  endl;
-        }
-        else 
-        {
-            Serial.print("Unk:");
+            firstYaw = event->orientation.x; 
+            Serial << "firstYaw = " << firstYaw << endl; 
+            state += 1;
         }
 
-        uint8_t system, gyro, accel, mag = 0;
-        bno.getCalibration(&system, &gyro, &accel, &mag);
+        if (state == 1)
+        {
+            if (event->type == SENSOR_TYPE_ORIENTATION) 
+            {
+                double yaw = event->orientation.x - firstYaw; // yaw
+                if (yaw > 180)
+                {
+                    yaw -= 360;
+                }
+                double roll = -1*event->orientation.y; // roll
+                double pitch = -1*event->orientation.z; // pitch
+                yawAngle.put(yaw);
+                rollAngle.put(roll);
+                pitchAngle.put(pitch);
+                // Serial << "yaw = " << yaw << ", roll = " << roll << ", pitch = " << pitch <<  endl;
+            }
+            else 
+            {
+                Serial.print("Unk:");
+            }
 
+            uint8_t system, gyro, accel, mag = 0;
+            bno.getCalibration(&system, &gyro, &accel, &mag);
+        }
         vTaskDelay(40); 
     }
 }
