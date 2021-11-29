@@ -39,20 +39,20 @@ void task_PID(void* p_params)
     // rollController.SetInputs (1.0f, 0.5f,  6.0f, 1.0f,  -75.0f,  75.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (1.0, 0.5, 6.0)
     // yawController.SetInputs  (6.0f, 0.0f, 0.0f, 1.0f, -150.0f, 150.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (1.0, 0.5, 6.0)
 
-    // Testing after reducing Tau
-    // SetInputs             (  Kp,    Ki,    Kd,  tau,     min,    max, minInt, maxInt,     T)                   
-    pitchController.SetInputs(4.5f,  0.0f,  0.0f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (5.0, 2.0, 20.0)
-    rollController.SetInputs (0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (3.0, 0.0, 3.0)
-    yawController.SetInputs  (20.0f, 0.0f,  0.0f, 0.5f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (1.0, 0.5, 6.0)
+    // Testing after reducing Tau 2 and 4. KI = 2 got it to correct for error with 100 offset
+    // SetInputs             (   Kp,    Ki,    Kd,  tau,     min,    max, minInt, maxInt,     T)                   
+    pitchController.SetInputs( 4.0f,  0.0f,  2.0f, 0.1f, -250.0f, 250.0f, -100.0f,  100.0f, 0.05f); // Matthew finished tuning with phone (4.5, 0.0, 0.0)
+    rollController.SetInputs ( 0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (3.0, 0.0, 3.0)
+    yawController.SetInputs  (20.0f,  0.0f,  0.0f, 0.5f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (1.0, 0.5, 6.0)
 
     // input setpoints for each motor here
-    float pitchSetpoint =  -90.0f; // should be -90 for the BNO055
+    float pitchSetpoint = -90.0f; // should be -90 for the BNO055
     float rollSetpoint  =   0.0f;  // should be 0 for the BNO055
     float yawSetpoint   =   0.0f;  // should be 0 for the BNO055
 
-    float rollOffset  = 20;  // Minimum value to feel resistance at small angles had at 70 (worked kinda well around 40)
-    float pitchOffset = 100; // Minimum value to feel resistance at small angles
-    float yawOffset   = 30;  // Minimum value to feel resistance at small angles
+    float rollOffset  =  20;  // Minimum value to feel resistance at small angles
+    float pitchOffset =  100; // Minimum value to feel resistance at small angles felt resistance around 100
+    float yawOffset   =  30;  // Minimum value to feel resistance at small angles
 
     for (;;)
     {
@@ -61,7 +61,7 @@ void task_PID(void* p_params)
         float controlRollSpeed  = rollController.Update( rollSetpoint, rollAngle.get() );
         float controlYawSpeed   = yawController.Update( yawSetpoint, yawAngle.get() );
         
-
+        // Correct for the stiction in the motors.
         if (controlRollSpeed > 0)
         {
             controlRollSpeed += rollOffset;
@@ -71,14 +71,31 @@ void task_PID(void* p_params)
             controlRollSpeed -= rollOffset;
         }
         
+        if (controlPitchSpeed > 0)
+        {
+            controlPitchSpeed += pitchOffset;
+        }
+        else if (controlPitchSpeed < 0)
+        {
+            controlPitchSpeed -= pitchOffset;
+        }
 
-        // put controller outputs into shares
+        if (controlYawSpeed > 0)
+        {
+            controlYawSpeed += yawOffset;
+        }
+        else if (controlYawSpeed < 0)
+        {
+            controlYawSpeed -= yawOffset;
+        }
+
+        // put controller outputs into shares after correction
         pMotSpeed.put(controlPitchSpeed);
         rMotSpeed.put(controlRollSpeed);
         yMotSpeed.put(controlYawSpeed);
 
-        Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
-        // Serial << " p = " << controlPitchSpeed << ", angle = " << pitchAngle.get() << endl;
+        // Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
+        Serial << " p = " << controlPitchSpeed << ", angle = " << pitchAngle.get() << endl;
         // Serial << " y = " << controlYawSpeed << ", angle = " << yawAngle.get() << endl;
 
         // This task always runs once every 40 ms
