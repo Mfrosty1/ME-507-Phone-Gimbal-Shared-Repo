@@ -43,6 +43,6 @@ void task_motor(void* p_params)
         // yawMotor.moveMotor(yMotSpeed.get());
 
         // This task always runs once every 40 ms
-        vTaskDelay (40);
+        vTaskDelay (20);
     }
 }

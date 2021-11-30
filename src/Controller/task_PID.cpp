@@ -41,8 +41,10 @@ void task_PID(void* p_params)
 
     // Testing after reducing Tau 2 and 4. KI = 2 got it to correct for error with 100 offset
     // SetInputs             (   Kp,    Ki,    Kd,  tau,     min,    max, minInt, maxInt,     T)                   
-    pitchController.SetInputs( 4.0f,  0.0f,  2.0f, 0.1f, -250.0f, 250.0f, -100.0f,  100.0f, 0.05f); // Matthew finished tuning with phone (4.5, 0.0, 0.0)
-    rollController.SetInputs ( 0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (3.0, 0.0, 3.0)
+    // pitchController.SetInputs( 5.0f,  1.0f,  2.0f, 0.1f, -250.0f, 250.0f, -100.0f,  100.0f, 0.05f); // Matthew finished tuning with phone (4.5, 0.0, 0.0)
+    
+    pitchController.SetInputs( 6.0f,  0.3f,  4.0f, 0.1f, -250.0f, 250.0f, -100.0f,  100.0f, 0.05f); // Ryan messing around
+    rollController.SetInputs ( 0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Working well without pitch ( 0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f)
     yawController.SetInputs  (20.0f,  0.0f,  0.0f, 0.5f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (1.0, 0.5, 6.0)
 
     // input setpoints for each motor here
@@ -51,7 +53,7 @@ void task_PID(void* p_params)
     float yawSetpoint   =   0.0f;  // should be 0 for the BNO055
 
     float rollOffset  =  20;  // Minimum value to feel resistance at small angles
-    float pitchOffset =  100; // Minimum value to feel resistance at small angles felt resistance around 100
+    float pitchOffset =  70; // Minimum value to feel resistance at small angles felt resistance around 100 used to be 30
     float yawOffset   =  30;  // Minimum value to feel resistance at small angles
 
     for (;;)
@@ -99,6 +101,6 @@ void task_PID(void* p_params)
         // Serial << " y = " << controlYawSpeed << ", angle = " << yawAngle.get() << endl;
 
         // This task always runs once every 40 ms
-        vTaskDelay (40);
+        vTaskDelay (20);
     }
 }

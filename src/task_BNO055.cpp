@@ -89,6 +89,6 @@ void task_BNO055 (void* p_params)
             uint8_t system, gyro, accel, mag = 0;
             bno.getCalibration(&system, &gyro, &accel, &mag);
         }
-        vTaskDelay(40); 
+        vTaskDelay(10); 
     }
 }
