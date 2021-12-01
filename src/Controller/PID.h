@@ -12,37 +12,47 @@
 
 #include "Arduino.h"
 
+/**
+ * Class to calculate the next motor speed based on a PID loop
+ */
 class PID
 {
 	protected:
 	
-		// ------ User inputs -------
-		// Controller Gains
+		/// Proportional gain
 		float Kp;
+		/// Integrator gain
 		float Ki;
+		/// Derivative gain
 		float Kd;
 
-		// Derivative low-pass filter time constant
+		/// Derivative low-pass filter time constant
 		float tau;
 
-		// Output limits
+		/// Output max limit
 		float limMin;
+		/// Output min limit
 		float limMax;
 
-		// Integrator limits
+		/// Integrator max limit
 		float limMinInt;
+		/// Integrator min limit
 		float limMaxInt;
 
-		// Sample time (in seconds)
+		/// Sample time (in seconds)
 		float T;
 
 		// ------- Controller Memory (not user inputted) -------
+		/// Integrator term
 		float integrator;
-		float prevError;			// Required for integrator
+		/// The previous error, needed for the integrator
+		float prevError;		
+		/// Differentiator term
 		float differentiator;
-		float prevMeasurement;		// Required for differentiator
+		/// The previous measurement, needed for the differentiator
+		float prevMeasurement;
 
-		// controller ouptut
+		///S controller ouptut
 		float out;
 
 	public:

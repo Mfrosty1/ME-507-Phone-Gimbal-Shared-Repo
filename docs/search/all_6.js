@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['rmotspeed_0',['rMotSpeed',['../shares_8h.html#a534f0065961ea86bb0a9ba65f061159b',1,'rMotSpeed():&#160;shares.h'],['../main_8cpp.html#a4e9ac0c96fb54d7496b608ff4ab5d04a',1,'rMotSpeed(&quot;Roll Motor Speed&quot;):&#160;main.cpp']]],
-  ['rollangle_1',['rollAngle',['../shares_8h.html#a43dfa912ce86c051b62272b2bb0638cb',1,'rollAngle():&#160;shares.h'],['../main_8cpp.html#aa853b3859747fe75bc14452a5f7447d6',1,'rollAngle(&quot;Roll Angle&quot;):&#160;main.cpp']]]
+  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['motorforward_1',['motorForward',['../classDRV8256.html#a0b51d3f890226fc72f2950ba1187f2f9',1,'DRV8256']]],
+  ['motorreverse_2',['motorReverse',['../classDRV8256.html#ad7b0759c7f34db2638023b4562241b72',1,'DRV8256']]],
+  ['motorstop_3',['motorStop',['../classDRV8256.html#a018df6080bf8a164c0be738e77213886',1,'DRV8256']]],
+  ['movemotor_4',['moveMotor',['../classDRV8256.html#a9d7f9756ffdeb2e3f031b61402c15a30',1,'DRV8256']]]
 ];

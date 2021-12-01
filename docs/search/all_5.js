@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['pitchangle_0',['pitchAngle',['../shares_8h.html#a0f93c599c5e67076f704bb4cb97c848e',1,'pitchAngle():&#160;shares.h'],['../main_8cpp.html#abe601d53f6d6c58afd7f88f7cb5dc14b',1,'pitchAngle(&quot;Pitch Angle&quot;):&#160;main.cpp']]],
-  ['pmotspeed_1',['pMotSpeed',['../shares_8h.html#aef942cb17efc2bb704104ff40211b5c9',1,'pMotSpeed():&#160;shares.h'],['../main_8cpp.html#a37cd92b25f9c054fde4375b09bb1170b',1,'pMotSpeed(&quot;Pitch Motor Speed&quot;):&#160;main.cpp']]]
+  ['limmax_0',['limMax',['../classPID.html#a4944aec183f7366c0b0a36913e2fe1df',1,'PID']]],
+  ['limmaxint_1',['limMaxInt',['../classPID.html#a2fc1fcbe4a7620fd1dd8f5daab550c5c',1,'PID']]],
+  ['limmin_2',['limMin',['../classPID.html#abbe47d7bf3fe1480a12b4c47f033f91d',1,'PID']]],
+  ['limminint_3',['limMinInt',['../classPID.html#a4823c61c0d9f579c6004ff0233390ae5',1,'PID']]],
+  ['loop_4',['loop',['../main_8cpp.html#afe461d27b9c48d5921c00d521181f12f',1,'main.cpp']]]
 ];

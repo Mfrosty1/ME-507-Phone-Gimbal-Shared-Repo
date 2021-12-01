@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['yawangle_0',['yawAngle',['../shares_8h.html#af9cbb01f2983a811f7e41c58b432d86f',1,'shares.h']]],
-  ['ymotspeed_1',['yMotSpeed',['../shares_8h.html#a534f37609de8e1b083a55d2519f2cf81',1,'shares.h']]]
+  ['kd_0',['Kd',['../classPID.html#a105396cb94f3ec2f352b3d116529112b',1,'PID']]],
+  ['ki_1',['Ki',['../classPID.html#ab48eeec8704e5d517a64b91fbe4fba57',1,'PID']]],
+  ['kp_2',['Kp',['../classPID.html#a67f2b50c209d4de6a20c710b33b62f0e',1,'PID']]]
 ];
