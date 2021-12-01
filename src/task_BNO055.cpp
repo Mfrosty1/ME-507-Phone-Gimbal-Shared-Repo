@@ -44,7 +44,7 @@ void task_BNO055 (void* p_params)
     }
     else
     {
-        Serial << "bno is connected properly" << endl;
+        // Serial << "bno is connected properly" << endl;
     }
     delay(1000); // For initialization purposes
     uint8_t state = 0; // Set state machine to state 0
@@ -79,7 +79,9 @@ void task_BNO055 (void* p_params)
                 yawAngle.put(yaw);
                 rollAngle.put(roll);
                 pitchAngle.put(pitch);
-                // Serial << "yaw = " << yaw << ", roll = " << roll << ", pitch = " << pitch <<  endl;
+
+                // Printing data to be plotted later
+                Serial << millis() << ", " << roll << endl;
             }
             else 
             {

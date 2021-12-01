@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['yawangle_0',['yawAngle',['../main_8cpp.html#ab5029c82712d299dfc8f036a49cc3812',1,'main.cpp']]],
-  ['ymotspeed_1',['yMotSpeed',['../main_8cpp.html#a2a0d09bba1002bb0f5a8ffddd45661ec',1,'main.cpp']]]
+  ['motorforward_0',['motorForward',['../classDRV8256.html#a0b51d3f890226fc72f2950ba1187f2f9',1,'DRV8256']]],
+  ['motorreverse_1',['motorReverse',['../classDRV8256.html#ad7b0759c7f34db2638023b4562241b72',1,'DRV8256']]],
+  ['motorstop_2',['motorStop',['../classDRV8256.html#a018df6080bf8a164c0be738e77213886',1,'DRV8256']]],
+  ['movemotor_3',['moveMotor',['../classDRV8256.html#a9d7f9756ffdeb2e3f031b61402c15a30',1,'DRV8256']]]
 ];

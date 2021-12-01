@@ -27,7 +27,4 @@ extern Share<int16_t> rMotSpeed;
 /// Shared variable for the next yaw motor speed
 extern Share<int16_t> yMotSpeed;
 
-// A queue which triggers a task to print the count at certain times
-// extern Queue<uint16_t> data_queue;
-
 #endif // _SHARES_H_

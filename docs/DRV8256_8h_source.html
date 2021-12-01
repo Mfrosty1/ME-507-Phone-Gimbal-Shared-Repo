@@ -118,38 +118,43 @@ $(document).ready(function(){initNavTree('DRV8256_8h_source.html',''); initResiz
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#include &quot;Arduino.h&quot;</span></div>
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span> </div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno"><a class="line" href="classDRV8256.html">   23</a></span><span class="keyword">class </span><a class="code hl_class" href="classDRV8256.html">DRV8256</a></div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>{</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// Constructor for the class:</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <a class="code hl_class" href="classDRV8256.html">DRV8256</a>();</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Functions to attach motors:</span></div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordtype">void</span> attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uint8_t fault_pin);</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno"><a class="line" href="classDRV8256.html">   26</a></span><span class="keyword">class </span><a class="code hl_class" href="classDRV8256.html">DRV8256</a></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>{</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    <span class="comment">// Constructor for the class:</span></div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <a class="code hl_class" href="classDRV8256.html">DRV8256</a>();</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="comment">// Motor control functions:</span></div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keywordtype">void</span> moveMotor(int16_t speed);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordtype">void</span> motorReverse(uint8_t speed);</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> motorForward(uint8_t speed);</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    <span class="keywordtype">void</span> motorStop();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keywordtype">void</span> clearFault();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    <span class="comment">// Fields for the class:</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    uint8_t enablePin, phasePin, sleepPin, faultPin, userButton;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordtype">bool</span> motorAttached = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>};</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span><span class="preprocessor">#endif </span><span class="comment">// DRV8256_H</span></div>
-<div class="ttc" id="aclassDRV8256_html"><div class="ttname"><a href="classDRV8256.html">DRV8256</a></div><div class="ttdef"><b>Definition:</b> DRV8256.h:24</div></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDRV8256.html#a68247f7582243d9a851f35333b58f10f">attachMotor</a>(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uint8_t fault_pin);</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="comment">// Motor control functions:</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment"></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDRV8256.html#a9d7f9756ffdeb2e3f031b61402c15a30">moveMotor</a>(int16_t speed);</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDRV8256.html#ad7b0759c7f34db2638023b4562241b72">motorReverse</a>(uint8_t speed);</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDRV8256.html#a0b51d3f890226fc72f2950ba1187f2f9">motorForward</a>(uint8_t speed);</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDRV8256.html#a018df6080bf8a164c0be738e77213886">motorStop</a>();</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordtype">void</span> <a class="code hl_function" href="classDRV8256.html#a0585aef66f0bfbcd8f3bba243392f47e">clearFault</a>();</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="comment">// Fields for the class:</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    uint8_t enablePin, phasePin, sleepPin, faultPin, userButton;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordtype">bool</span> motorAttached = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>};</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif </span><span class="comment">// DRV8256_H</span></div>
+<div class="ttc" id="aclassDRV8256_html"><div class="ttname"><a href="classDRV8256.html">DRV8256</a></div><div class="ttdef"><b>Definition:</b> DRV8256.h:27</div></div>
+<div class="ttc" id="aclassDRV8256_html_a018df6080bf8a164c0be738e77213886"><div class="ttname"><a href="classDRV8256.html#a018df6080bf8a164c0be738e77213886">DRV8256::motorStop</a></div><div class="ttdeci">void motorStop()</div><div class="ttdoc">Function to stop the motor.</div><div class="ttdef"><b>Definition:</b> DRV8256.cpp:119</div></div>
+<div class="ttc" id="aclassDRV8256_html_a0585aef66f0bfbcd8f3bba243392f47e"><div class="ttname"><a href="classDRV8256.html#a0585aef66f0bfbcd8f3bba243392f47e">DRV8256::clearFault</a></div><div class="ttdeci">void clearFault()</div><div class="ttdoc">Function to clear a fault per the DRV8256 specs.</div><div class="ttdef"><b>Definition:</b> DRV8256.cpp:130</div></div>
+<div class="ttc" id="aclassDRV8256_html_a0b51d3f890226fc72f2950ba1187f2f9"><div class="ttname"><a href="classDRV8256.html#a0b51d3f890226fc72f2950ba1187f2f9">DRV8256::motorForward</a></div><div class="ttdeci">void motorForward(uint8_t speed)</div><div class="ttdoc">Function to move the motor in forward.</div><div class="ttdef"><b>Definition:</b> DRV8256.cpp:107</div></div>
+<div class="ttc" id="aclassDRV8256_html_a68247f7582243d9a851f35333b58f10f"><div class="ttname"><a href="classDRV8256.html#a68247f7582243d9a851f35333b58f10f">DRV8256::attachMotor</a></div><div class="ttdeci">void attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uint8_t fault_pin)</div><div class="ttdef"><b>Definition:</b> DRV8256.cpp:29</div></div>
+<div class="ttc" id="aclassDRV8256_html_a9d7f9756ffdeb2e3f031b61402c15a30"><div class="ttname"><a href="classDRV8256.html#a9d7f9756ffdeb2e3f031b61402c15a30">DRV8256::moveMotor</a></div><div class="ttdeci">void moveMotor(int16_t speed)</div><div class="ttdoc">Function to move the motors.</div><div class="ttdef"><b>Definition:</b> DRV8256.cpp:56</div></div>
+<div class="ttc" id="aclassDRV8256_html_ad7b0759c7f34db2638023b4562241b72"><div class="ttname"><a href="classDRV8256.html#ad7b0759c7f34db2638023b4562241b72">DRV8256::motorReverse</a></div><div class="ttdeci">void motorReverse(uint8_t speed)</div><div class="ttdoc">Function to move the motor in reverse.</div><div class="ttdef"><b>Definition:</b> DRV8256.cpp:95</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>DRV8256.h</b></li>
-    <li class="footer">Generated on Wed Dec 1 2021 11:27:59 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Wed Dec 1 2021 12:16:07 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

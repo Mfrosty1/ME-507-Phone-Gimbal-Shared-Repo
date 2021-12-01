@@ -44,8 +44,8 @@ void task_PID(void* p_params)
     // pitchController.SetInputs( 5.0f,  1.0f,  2.0f, 0.1f, -250.0f, 250.0f, -100.0f,  100.0f, 0.05f); // Matthew finished tuning with phone (4.5, 0.0, 0.0)
     
     pitchController.SetInputs( 6.0f,  0.3f,  4.0f, 0.1f, -250.0f, 250.0f, -100.0f,  100.0f, 0.05f); // Ryan messing around
-    rollController.SetInputs ( 0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Working well without pitch ( 0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f)
-    yawController.SetInputs  (20.0f,  0.0f,  0.0f, 0.5f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f); // Matthew finished tuning with phone (1.0, 0.5, 6.0)
+    rollController.SetInputs ( 0.3f, 0.01f,  3.0f, 0.1f, -250.0f, 250.0f,  -10.0f,   10.0f, 0.05f); // Working well without pitch ( 0.3f, 0.01f,  1.5f, 0.1f, -250.0f, 250.0f, -10.0f,  10.0f, 0.05f)
+    yawController.SetInputs  (20.0f,  0.0f,  0.0f, 0.5f, -250.0f, 250.0f,  -10.0f,   10.0f, 0.05f); // Matthew finished tuning with phone (1.0, 0.5, 6.0)
 
     // input setpoints for each motor here
     float pitchSetpoint = -90.0f; // should be -90 for the BNO055
@@ -97,7 +97,7 @@ void task_PID(void* p_params)
         yMotSpeed.put(controlYawSpeed);
 
         // Serial << " r = " << controlRollSpeed << ", angle = " << rollAngle.get() << endl;
-        Serial << " p = " << controlPitchSpeed << ", angle = " << pitchAngle.get() << endl;
+        // Serial << " p = " << controlPitchSpeed << ", angle = " << pitchAngle.get() << endl;
         // Serial << " y = " << controlYawSpeed << ", angle = " << yawAngle.get() << endl;
 
         // This task always runs once every 40 ms

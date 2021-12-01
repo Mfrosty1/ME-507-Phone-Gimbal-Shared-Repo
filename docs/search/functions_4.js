@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['yawangle_0',['yawAngle',['../main_8cpp.html#ab5029c82712d299dfc8f036a49cc3812',1,'main.cpp']]],
-  ['ymotspeed_1',['yMotSpeed',['../main_8cpp.html#a2a0d09bba1002bb0f5a8ffddd45661ec',1,'main.cpp']]]
+  ['pitchangle_0',['pitchAngle',['../main_8cpp.html#abe601d53f6d6c58afd7f88f7cb5dc14b',1,'main.cpp']]],
+  ['pmotspeed_1',['pMotSpeed',['../main_8cpp.html#a37cd92b25f9c054fde4375b09bb1170b',1,'main.cpp']]]
 ];

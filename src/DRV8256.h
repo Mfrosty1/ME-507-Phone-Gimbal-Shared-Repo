@@ -20,20 +20,30 @@
 
 #include "Arduino.h"
 
+/**
+ * Prewritten DRV8256 driver class
+ */
 class DRV8256
 {
 public:
 	// Constructor for the class:
 	DRV8256();
 
-	// Functions to attach motors:
+	/**
+ 	* Functions to attach motors
+ 	*/
 	void attachMotor(uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uint8_t fault_pin);
 
 	// Motor control functions:
+	/// Function to move the motors
 	void moveMotor(int16_t speed);
+	/// Function to move the motor in reverse
 	void motorReverse(uint8_t speed);
+	/// Function to move the motor in forward
 	void motorForward(uint8_t speed);
+	/// Function to stop the motor
 	void motorStop();
+	/// Function to clear a fault per the DRV8256 specs
 	void clearFault();
 
 private:

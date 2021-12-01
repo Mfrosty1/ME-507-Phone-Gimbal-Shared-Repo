@@ -1,4 +1,4 @@
 var annotated_dup =
 [
-    [ "DRV8256", "classDRV8256.html", null ]
+    [ "DRV8256", "classDRV8256.html", "classDRV8256" ]
 ];

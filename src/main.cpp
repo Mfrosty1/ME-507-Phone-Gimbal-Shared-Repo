@@ -41,6 +41,9 @@ Share<int16_t> rMotSpeed("Roll Motor Speed");
 /// A share to hold the desired yaw motor speed.
 Share<int16_t> yMotSpeed("Yaw Motor Speed");
 
+/**
+ * The standard Arduino setup function used for setup and configuration tasks.
+ */
 void setup() {
 
     // Begin Serial port
@@ -76,7 +79,10 @@ void setup() {
         vTaskStartScheduler ();
     #endif             
 }
- 
+
+/**
+ * The standard Arduino loop function used for repeating tasks.
+ */ 
 void loop() 
 {
     

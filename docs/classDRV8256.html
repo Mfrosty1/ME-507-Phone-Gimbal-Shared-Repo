@@ -99,28 +99,78 @@ $(document).ready(function(){initNavTree('classDRV8256.html',''); initResizable(
   <div class="headertitle"><div class="title">DRV8256 Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="DRV8256_8h_source.html">DRV8256.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a68247f7582243d9a851f35333b58f10f"><td class="memItemLeft" align="right" valign="top"><a id="a68247f7582243d9a851f35333b58f10f" name="a68247f7582243d9a851f35333b58f10f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>attachMotor</b> (uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uint8_t fault_pin)</td></tr>
+<tr class="memitem:a68247f7582243d9a851f35333b58f10f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDRV8256.html#a68247f7582243d9a851f35333b58f10f">attachMotor</a> (uint8_t EN_pin, uint8_t PH_pin, uint8_t sleep_pin, uint8_t fault_pin)</td></tr>
 <tr class="separator:a68247f7582243d9a851f35333b58f10f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d7f9756ffdeb2e3f031b61402c15a30"><td class="memItemLeft" align="right" valign="top"><a id="a9d7f9756ffdeb2e3f031b61402c15a30" name="a9d7f9756ffdeb2e3f031b61402c15a30"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>moveMotor</b> (int16_t speed)</td></tr>
+<tr class="memdesc:a9d7f9756ffdeb2e3f031b61402c15a30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to move the motors. <br /></td></tr>
 <tr class="separator:a9d7f9756ffdeb2e3f031b61402c15a30"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad7b0759c7f34db2638023b4562241b72"><td class="memItemLeft" align="right" valign="top"><a id="ad7b0759c7f34db2638023b4562241b72" name="ad7b0759c7f34db2638023b4562241b72"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>motorReverse</b> (uint8_t speed)</td></tr>
+<tr class="memdesc:ad7b0759c7f34db2638023b4562241b72"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to move the motor in reverse. <br /></td></tr>
 <tr class="separator:ad7b0759c7f34db2638023b4562241b72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b51d3f890226fc72f2950ba1187f2f9"><td class="memItemLeft" align="right" valign="top"><a id="a0b51d3f890226fc72f2950ba1187f2f9" name="a0b51d3f890226fc72f2950ba1187f2f9"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>motorForward</b> (uint8_t speed)</td></tr>
+<tr class="memdesc:a0b51d3f890226fc72f2950ba1187f2f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to move the motor in forward. <br /></td></tr>
 <tr class="separator:a0b51d3f890226fc72f2950ba1187f2f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a018df6080bf8a164c0be738e77213886"><td class="memItemLeft" align="right" valign="top"><a id="a018df6080bf8a164c0be738e77213886" name="a018df6080bf8a164c0be738e77213886"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>motorStop</b> ()</td></tr>
+<tr class="memdesc:a018df6080bf8a164c0be738e77213886"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to stop the motor. <br /></td></tr>
 <tr class="separator:a018df6080bf8a164c0be738e77213886"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0585aef66f0bfbcd8f3bba243392f47e"><td class="memItemLeft" align="right" valign="top"><a id="a0585aef66f0bfbcd8f3bba243392f47e" name="a0585aef66f0bfbcd8f3bba243392f47e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>clearFault</b> ()</td></tr>
+<tr class="memdesc:a0585aef66f0bfbcd8f3bba243392f47e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to clear a fault per the <a class="el" href="classDRV8256.html">DRV8256</a> specs. <br /></td></tr>
 <tr class="separator:a0585aef66f0bfbcd8f3bba243392f47e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Prewritten <a class="el" href="classDRV8256.html">DRV8256</a> driver class </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="a68247f7582243d9a851f35333b58f10f" name="a68247f7582243d9a851f35333b58f10f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a68247f7582243d9a851f35333b58f10f">&#9670;&nbsp;</a></span>attachMotor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DRV8256::attachMotor </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>EN_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>PH_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>sleep_pin</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>fault_pin</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Functions to attach motors </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li><a class="el" href="DRV8256_8h_source.html">DRV8256.h</a></li>
 <li>DRV8256.cpp</li>
@@ -131,7 +181,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>clearFault</b> ()</td
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="classDRV8256.html">DRV8256</a></li>
-    <li class="footer">Generated on Wed Dec 1 2021 11:27:59 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Wed Dec 1 2021 12:16:07 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

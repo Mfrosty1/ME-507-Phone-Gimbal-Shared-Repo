@@ -33,7 +33,7 @@ void task_motor(void* p_params)
     // yawMotor.attachMotor  (PA9,    PA8,    PA6,   PA4); // Yaw motor pins 
     // rollMotor.attachMotor (PB5,  PB4, PA7,   PA4); // Roll motor pins with breakout board
 
-    Serial.println("MotTask: motor objects defined");
+    // Serial.println("MotTask: motor objects defined");
 
     for (;;)
     {

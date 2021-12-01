@@ -57,7 +57,7 @@ void DRV8256::moveMotor(int16_t speed)
 {
 	if (!digitalRead(faultPin))
 	{
-		Serial << "Fault occured" << endl;
+		// Serial << "Fault occured" << endl;
 	}
 
 	if (!digitalRead(sleepPin))
