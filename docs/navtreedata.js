@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Phone Gimbal: Me 507 Term Project", "index.html", [
+  [ "Stabilizing Phone Gimbal", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
