@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Matthew's Portfolio", "index.html", [
+  [ "Phone Gimbal: Me 507 Term Project", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
