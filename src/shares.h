@@ -14,11 +14,17 @@
 #include "taskshare.h"
 
 // A share which holds a counter of how many times a simulated event occurred
+/// Shared variable for the pitch angle
 extern Share<float> pitchAngle;
+/// Shared variable for the roll angle
 extern Share<float> rollAngle;
+/// Shared variable for the yaw angle
 extern Share<float> yawAngle;
+/// Shared variable for the next pitch motor speed
 extern Share<int16_t> pMotSpeed;
+/// Shared variable for the next roll motor speed
 extern Share<int16_t> rMotSpeed;
+/// Shared variable for the next yaw motor speed
 extern Share<int16_t> yMotSpeed;
 
 // A queue which triggers a task to print the count at certain times

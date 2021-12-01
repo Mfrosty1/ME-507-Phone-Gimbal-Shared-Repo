@@ -6,7 +6,6 @@
  */
 
 // Includes for IMU stuff
-// #include "IMU/ICM_20948.h" // Click here to get the library: http://librarymanager/All#SparkFun_ICM_20948_IMU
 #include "Wire.h"
 
 // Includes for motor driver stuff
@@ -20,7 +19,6 @@
 #endif
 
 // Includes for our tasks
-// #include "task_IMU.h"            // Header for IMU task
 #include "task_motor.h"          // Header for motor task
 #include "Controller/task_PID.h" // Header for controller 
 #include "task_simplePrint.h"
@@ -44,9 +42,6 @@ Share<int16_t> rMotSpeed("Roll Motor Speed");
 Share<int16_t> yMotSpeed("Yaw Motor Speed");
 
 void setup() {
-
-    // newClass myObj
-    // void* pointer = &myObj;
 
     // Begin Serial port
     Serial.begin(115200);

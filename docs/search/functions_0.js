@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['geteuler_0',['getEuler',['../classgetEuler.html#aac691c111d7059c66b4815c21677665a',1,'getEuler']]]
+  ['pitchangle_0',['pitchAngle',['../main_8cpp.html#abe601d53f6d6c58afd7f88f7cb5dc14b',1,'main.cpp']]],
+  ['pmotspeed_1',['pMotSpeed',['../main_8cpp.html#a37cd92b25f9c054fde4375b09bb1170b',1,'main.cpp']]]
 ];

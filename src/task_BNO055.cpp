@@ -1,4 +1,4 @@
-/** @file mIMU_Task.cpp
+/** @file task_BNO055.cpp
  *    This file the task for the IMU
  * 
  *  @author Matthew Frost
