@@ -31,9 +31,8 @@ void task_motor(void* p_params)
     rollMotor.attachMotor (PB4,    PB5,    PA5,   PA4); // Roll motor pins with PCB
     pitchMotor.attachMotor(PB8,    PB9,    PA5,   PA4); // Pitch motor pins
     // yawMotor.attachMotor  (PA9,    PA8,    PA6,   PA4); // Yaw motor pins 
-    // rollMotor.attachMotor (PB5,  PB4, PA7,   PA4); // Roll motor pins with breakout board
 
-    // Serial.println("MotTask: motor objects defined");
+    Serial.println("MotTask: motor objects defined");
 
     for (;;)
     {
@@ -42,7 +41,7 @@ void task_motor(void* p_params)
         pitchMotor.moveMotor(pMotSpeed.get());
         // yawMotor.moveMotor(yMotSpeed.get());
 
-        // This task always runs once every 40 ms
+        // This task always runs once every 20 ms
         vTaskDelay (20);
     }
 }

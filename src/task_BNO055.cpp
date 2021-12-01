@@ -13,8 +13,8 @@
 #if (defined STM32L4xx || defined STM32F4xx)
     #include <STM32FreeRTOS.h>
 #endif
-#include "taskshare.h"         // Header for inter-task shared data
-#include "taskqueue.h"         // Header for inter-task data queues
+#include "taskshare.h"         
+#include "taskqueue.h"         
 #include "shares.h"
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BNO055.h>
@@ -81,7 +81,7 @@ void task_BNO055 (void* p_params)
                 pitchAngle.put(pitch);
 
                 // Printing data to be plotted later
-                Serial << millis() << ", " << roll << endl;
+                Serial << millis() << ", " << pitch << endl;
             }
             else 
             {
@@ -91,6 +91,8 @@ void task_BNO055 (void* p_params)
             uint8_t system, gyro, accel, mag = 0;
             bno.getCalibration(&system, &gyro, &accel, &mag);
         }
+
+        // This task always runs once every 10 ms
         vTaskDelay(10); 
     }
 }

@@ -18,11 +18,10 @@
     #include <STM32FreeRTOS.h>
 #endif
 
-// Includes for our tasks
+// Includes for tasks
 #include "task_motor.h"          // Header for motor task
 #include "Controller/task_PID.h" // Header for controller 
-#include "task_simplePrint.h"
-#include "task_BNO055.h"
+#include "task_BNO055.h"         // BNO055 IMU Task
 #include "taskshare.h"           // Header for inter-task shared data
 #include "taskqueue.h"           // Header for inter-task data queues
 #include "shares.h"              // Header for shares used in this project
@@ -81,7 +80,7 @@ void setup() {
 }
 
 /**
- * The standard Arduino loop function used for repeating tasks.
+ * The standard Arduino loop function used for repeating tasks. Nothing is inputted for this project
  */ 
 void loop() 
 {
