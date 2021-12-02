@@ -10,8 +10,5 @@ var searchData=
   ['task_5fpid_7',['task_PID',['../task__PID_8cpp.html#a151f135edcc5bad946c9967453dcf89d',1,'task_PID(void *p_params):&#160;task_PID.cpp'],['../task__PID_8h.html#a151f135edcc5bad946c9967453dcf89d',1,'task_PID(void *p_params):&#160;task_PID.cpp']]],
   ['task_5fpid_2ecpp_8',['task_PID.cpp',['../task__PID_8cpp.html',1,'']]],
   ['task_5fpid_2eh_9',['task_PID.h',['../task__PID_8h.html',1,'']]],
-  ['task_5fsimpleprint_10',['task_simplePrint',['../task__simplePrint_8cpp.html#a71a622733bce1823db04b9499da98cfb',1,'task_simplePrint(void *p_params):&#160;task_simplePrint.cpp'],['../task__simplePrint_8h.html#a71a622733bce1823db04b9499da98cfb',1,'task_simplePrint(void *p_params):&#160;task_simplePrint.cpp']]],
-  ['task_5fsimpleprint_2ecpp_11',['task_simplePrint.cpp',['../task__simplePrint_8cpp.html',1,'']]],
-  ['task_5fsimpleprint_2eh_12',['task_simplePrint.h',['../task__simplePrint_8h.html',1,'']]],
-  ['tau_13',['tau',['../classPID.html#aaacae12dfe77718357a0f04456620dad',1,'PID']]]
+  ['tau_10',['tau',['../classPID.html#aaacae12dfe77718357a0f04456620dad',1,'PID']]]
 ];

@@ -113,7 +113,7 @@ Functions</h2></td></tr>
 <tr class="separator:aa5e85a29ea6967e65c3765aaf9cbf0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >This file contains code for a task to control the motors.</p>
+<div class="textblock"><p >This file contains code for a task to control the motors. This will instantiate each of the three motors and send the newest duty cycle from the controller to each of them separately.</p>
 <dl class="section author"><dt>Author</dt><dd>Matthew Frost </dd>
 <dd>
 Ryan McLaughlin </dd></dl>
@@ -136,7 +136,7 @@ Ryan McLaughlin </dd></dl>
 </div><div class="memdoc">
 
 <p>Task which initalized the motors and then takes in speed from the controller. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p >As designed on our circuit board, the pins for the enable, phase, !SLEEP, and !FAULT pins are defined when the <code>attachMotor</code> function of the <code><a class="el" href="classDRV8256.html">DRV8256</a></code> class. Once the motors are initialized, this task only gets the newest speed from the controller and tells the motor to move by that much. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_params</td><td>An unused pointer to nonexistent parameters </td></tr>
   </table>
@@ -151,7 +151,7 @@ Ryan McLaughlin </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="task__motor_8cpp.html">task_motor.cpp</a></li>
-    <li class="footer">Generated on Wed Dec 1 2021 12:31:12 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Dec 2 2021 09:22:59 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>

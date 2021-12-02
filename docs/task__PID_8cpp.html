@@ -109,11 +109,11 @@ $(document).ready(function(){initNavTree('task__PID_8cpp.html',''); initResizabl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a151f135edcc5bad946c9967453dcf89d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="task__PID_8cpp.html#a151f135edcc5bad946c9967453dcf89d">task_PID</a> (void *p_params)</td></tr>
-<tr class="memdesc:a151f135edcc5bad946c9967453dcf89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task which initalized the motors and then takes in speed from the controller.  <a href="task__PID_8cpp.html#a151f135edcc5bad946c9967453dcf89d">More...</a><br /></td></tr>
+<tr class="memdesc:a151f135edcc5bad946c9967453dcf89d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Task which sends and receives data from the <a class="el" href="classPID.html">PID</a> controllers.  <a href="task__PID_8cpp.html#a151f135edcc5bad946c9967453dcf89d">More...</a><br /></td></tr>
 <tr class="separator:a151f135edcc5bad946c9967453dcf89d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >This file contains code for a task to run a controller object.</p>
+<div class="textblock"><p >This file contains code for a task to run a controller object. This creates three objects of the class <code><a class="el" href="classPID.html">PID</a></code> such that each axes can be controlled seperately.</p>
 <dl class="section author"><dt>Author</dt><dd>Matthew Frost </dd>
 <dd>
 Ryan McLaughlin </dd></dl>
@@ -135,8 +135,8 @@ Ryan McLaughlin </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Task which initalized the motors and then takes in speed from the controller. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>Task which sends and receives data from the <a class="el" href="classPID.html">PID</a> controllers. </p>
+<p >In the setup of the task, the three objects of the <code><a class="el" href="classPID.html">PID</a></code> class are initialized and the controller values are set. Also, the setpoints of the IMU euler angles are set. Once it hits the <code>for</code>(;;) loop, the new duty cycles for the motors are retrieved and corrected for by the pre-defined offset. These are then sent to shares to give to <code><a class="el" href="task__motor_8cpp.html">task_motor.cpp</a></code> . </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">p_params</td><td>An unused pointer to nonexistent parameters </td></tr>
   </table>
@@ -151,7 +151,7 @@ Ryan McLaughlin </dd></dl>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_b500f500d6f9b315c95ab1cd4a3b5c0d.html">Controller</a></li><li class="navelem"><a class="el" href="task__PID_8cpp.html">task_PID.cpp</a></li>
-    <li class="footer">Generated on Wed Dec 1 2021 12:31:12 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
+    <li class="footer">Generated on Thu Dec 2 2021 09:22:59 for Stabilizing Phone Gimbal by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.2 </li>
   </ul>
 </div>
 </body>
