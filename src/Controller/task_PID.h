@@ -1,5 +1,5 @@
 /** @file task_PID.h
- *  This file serves as a header file for the controller task.
+ *      This file contains the header code for the controller task.
  * 
  *  @author Matthew Frost
  *  @author Ryan McLaughlin

@@ -1,10 +1,11 @@
 /** @file shares.h
- *  This file contains extern declarations of shares and queues which are used
- *  in more than one file of a demonstration project.
+ *      This file contains extern declarations of shares and queues which are used
+ *      in more than one file.
  * 
- *  @author JR Ridgely
- *  @date   2021-Oct-23 Original file
- *  @copyright (c) 2021 by JR Ridgely, released under the LGPL 3.0. 
+ *  @author Matthew Frost
+ *  @author Ryan McLaughlin
+ *  @author John Ridgely (code taken from in-class example)
+ *  @date   2021-Nov-09 Original file
  */
 
 #ifndef _SHARES_H_
@@ -13,7 +14,6 @@
 #include "taskqueue.h"
 #include "taskshare.h"
 
-// A share which holds a counter of how many times a simulated event occurred
 /// Shared variable for the pitch angle
 extern Share<float> pitchAngle;
 /// Shared variable for the roll angle

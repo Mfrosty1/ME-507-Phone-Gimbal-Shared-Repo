@@ -6,17 +6,16 @@
  *    - Derivative-on-measurement
  *    - Integrator anti-windup
  *    - Controller ouptut clamping
+ *    The source code was found here: https://github.com/pms67/PID
  *  @author Ryan McLaughlin
  *  @author Matthew Frost
  *  @author pms67 (original author of files adapted)
  *  @date   11/06/2021 Code accesed from pms67 GitHub repository
- *  @date   
  */
 
 #include "PID.h"
 #include "Arduino.h"
 #include "PrintStream.h"
-
 
 /** @brief   Initialize controller gains and inputs.
  *  @details This constructor takes in user selections for gains
@@ -73,7 +72,6 @@ void PID::Init(void)
 	out = 0.0f;
 }
 
-
 /** @brief   Update the controller to get a new controller output.
  *  @details This method calculates a new controller output value
  *  @param   setpoint    The current controller setpoint (@c float data type).
@@ -91,7 +89,7 @@ float PID::Update(float setpoint, float measurement)
     // check for nan conditions
     if (isnan(proportional))
     {
-        // Serial.println("prop: nan achieved");
+        // Serial.println("prop: nan achieved"); // Uncomment for debugging purposes
         proportional = 0;
     }
 
@@ -101,7 +99,7 @@ float PID::Update(float setpoint, float measurement)
     // check for nan conditions
     if (isnan(integrator))
     {
-        // Serial.println("int: nan achieved");
+        // Serial.println("int: nan achieved"); // Uncomment for debugging purposes
         integrator = 0;
     }
 

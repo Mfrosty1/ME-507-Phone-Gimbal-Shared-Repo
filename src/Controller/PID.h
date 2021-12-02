@@ -2,12 +2,11 @@
  *    This header file is for a class that implements a PID
  * 	  controller with some extra functionality (low-pass filter
  *    on differentiation, integrator clamping, etc.).
- * 
+ *    The source code was found here: https://github.com/pms67/PID 
  *  @author Ryan McLaughlin
  *  @author Matthew Frost
  *  @author pms67 (original author of files adapted)
  *  @date   11/06/2021 Code accesed from pms67 GitHub repository
- *  @date   
  */
 
 #include "Arduino.h"

@@ -1,8 +1,10 @@
 /** @file main.cpp
- *    Some description goes here
+ *    This is the file ran on the Nucleo to control the gimbal. The tasks
+ *    are initialized and the scheduler is started. Additionally, the shares
+ *    are declared before the @c setup() . 
  *  @author Matthew Frost
  *  @author Ryan McLaughlin
- *  @date  2021-Nov-06 Original file
+ *  @date   2021-Nov-06 Original file
  */
 
 // Includes for IMU stuff
@@ -48,29 +50,29 @@ void setup() {
     // Begin Serial port
     Serial.begin(115200);
     delay(5000);
-    Serial.println("Initializing pins");
+    Serial.println("Serial port started");
 
     // -------------- TASK DEFINITIONS -------------
     xTaskCreate (task_BNO055,
-                 "BNO Task",                      // Task name for printouts
-                 8192,                            // Stack size
-                 NULL,                            // Parameters for task fn.
-                 1,                               // Priority
-                 NULL);                           // Task handle
+                 "BNO Task",          // Task name for printouts
+                 8192,                // Stack size
+                 NULL,                // Parameters for task fn.
+                 1,                   // Priority
+                 NULL);               // Task handle
 
     xTaskCreate (task_motor,
-                 "Motor Task",                    // Task name for printouts
-                 4096,                            // Stack size
-                 NULL,                            // Parameters for task fn.
-                 1,                               // Priority
-                 NULL);                           // Task handle
+                 "Motor Task",        // Task name for printouts
+                 4096,                // Stack size
+                 NULL,                // Parameters for task fn.
+                 1,                   // Priority
+                 NULL);               // Task handle
 
     xTaskCreate (task_PID,
-                 "Controller Task",               // Task name for printouts
-                 4096,                            // Stack size
-                 NULL,                            // Parameters for task fn.
-                 1,                               // Priority
-                 NULL);                           // Task handle             
+                 "Controller Task",   // Task name for printouts
+                 4096,                // Stack size
+                 NULL,                // Parameters for task fn.
+                 1,                   // Priority
+                 NULL);               // Task handle             
 
     // If using an STM32, we need to call the scheduler startup function now;
     // if using an ESP32, it has already been called for us
