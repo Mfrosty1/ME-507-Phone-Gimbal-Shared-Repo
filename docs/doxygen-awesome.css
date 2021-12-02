@@ -29,16 +29,17 @@ SOFTWARE.
 
 :root {
     /* primary theme color. This will affect the entire websites color scheme: links, arrows, labels, ... */
-    --primary-color: #1982d2;
-    --primary-dark-color: #00559f;
-    --primary-light-color: #7aabd6;
+    --primary-color: #229c10;
+    --primary-dark-color: #135c0e;
+    --primary-light-color: #339933;
     --primary-lighter-color: #cae1f1;
-    --primary-lightest-color: #e9f1f8;
+    --primary-lightest-color: #cbf1ca;
 
     /* page base colors */
     --page-background-color: white;
-    --page-foreground-color: #2c3e50;
-    --page-secondary-foreground-color: #67727e;
+    --page-foreground-color: #000000;
+    --page-secondary-foreground-color: #697e67;
+
 
     /* color for all separators on the website: hr, borders, ... */
     --separator-color: #dedede;
@@ -69,12 +70,12 @@ SOFTWARE.
     --page-font-size: 15.6px;
     --navigation-font-size: 14.4px;
     --code-font-size: 14.4px; /* affects code, fragment */
-    --title-font-size: 22px;
+    --title-font-size: 28px;
 
     /* content text properties. These only affect the page content, not the navigation or any other ui elements */
     --content-line-height: 27px;
     /* The content is centered and constraint in it's width. To make the content fill the whole page, set the variable to auto.*/
-    --content-maxwidth: 900px;
+    --content-maxwidth: auto;
 
     /* colors for various content boxes: @warning, @note, @deprecated @bug */
     --warning-color: #fca49b;
@@ -92,13 +93,14 @@ SOFTWARE.
     --invariant-color: #b7f8d0;
     --invariant-color-dark: #00ba44;
     --invariant-color-darker: #008622;
+	 
 
     /* blockquote colors */
     --blockquote-background: #f5f5f5;
     --blockquote-foreground: #727272;
 
     /* table colors */
-    --tablehead-background: #f1f1f1;
+    --tablehead-background: var(--page-background-color);
     --tablehead-foreground: var(--page-foreground-color);
 
     /* menu-display: block | none
@@ -112,7 +114,7 @@ SOFTWARE.
     --menu-selected-background: rgba(0,0,0,.05);
 
 
-    --header-background: var(--page-background-color);
+    --header-background: #f1f1f1;
     --header-foreground: var(--page-foreground-color);
 
     /* searchbar colors */
@@ -122,7 +124,7 @@ SOFTWARE.
     /* searchbar size
      * (`searchbar-width` is only applied on screens >= 768px.
      * on smaller screens the searchbar will always fill the entire screen width) */
-    --searchbar-height: 33px;
+    --searchbar-height: 35px;
     --searchbar-width: 210px;
 
     /* code block colors */
@@ -213,7 +215,9 @@ body, table, div, p, dl, #nav-tree .label, .title, .sm-dox a, .sm-dox a:hover, .
     font-family: var(--font-family);
 }
 
-h1, h2, h3, h4, h5 {
+
+h1,h2,h3,h4,h5{
+    font-size:1.25em;   
     margin-top: .9em;
     font-weight: 600;
     line-height: initial;
@@ -230,7 +234,9 @@ a.custom:visited,  a.custom:focus, a.custom:active {
 a.custom:hover {
     color: #6299d0; }
 
-a, a.el:visited, a.el:hover, a.el:focus, a.el:active {
+
+/* Colors for site links (pages, etc.) */
+a.el:visited, a.el:hover, a.el:focus, a.el:active {
     color: var(--primary-dark-color);
 }
 
@@ -427,7 +433,9 @@ a, a.el:visited, a.el:hover, a.el:focus, a.el:active {
     border: 1px solid var(--separator-color);
     overflow: hidden;
     width: var(--searchbar-width);
-    position: relative;
+    position: absolute;
+    top: 20px;
+    right: 40px;
     box-shadow: none;
     display: block;
     margin-top: 0;
@@ -697,7 +705,7 @@ div.headertitle {
 
 div.header .title {
     font-weight: 600;
-    font-size: 210%;
+    font-size: 1.6em;
     padding: var(--spacing-medium) var(--spacing-large);
     word-break: break-word;
 }
